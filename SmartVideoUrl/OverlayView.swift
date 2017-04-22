@@ -25,9 +25,6 @@ class OverlayView: UIView {
     // Our custom view from the XIB file
     var view: UIView!
 
-    /// Visual effectView for having a blurry background
-    @IBOutlet weak var visualEffectView: UIVisualEffectView!
-
     /**
      Initialiser method
 
@@ -79,7 +76,6 @@ class OverlayView: UIView {
         view.layer.shadowRadius = 4.0
         view.layer.shadowOffset = CGSize(width: 0.0, height: 8.0)
 
-        visualEffectView.layer.cornerRadius = 4.0
     }
 
     /**

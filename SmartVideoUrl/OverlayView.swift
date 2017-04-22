@@ -19,7 +19,7 @@ class OverlayView: UIView {
 
     @IBAction func pressPausePlay(_ sender: Any) {
         print("AAAAAAAA")
-        delegate?.pressBtnOverlayView()
+        delegate?.pressBtn_overlayView()
     }
     
     @IBAction func pressBtn2(_ sender: Any) {
@@ -74,12 +74,6 @@ class OverlayView: UIView {
 
         titleLabel.text = "Saved successfully"
 
-        view.layer.cornerRadius = 4.0
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.2
-        view.layer.shadowRadius = 4.0
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 8.0)
-
     }
 
     /**
@@ -91,22 +85,15 @@ class OverlayView: UIView {
         self.alpha = 0.0
         onView.addSubview(self)
 
-        onView.addConstraint(NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: onView, attribute: .centerY, multiplier: 1.0, constant: -80.0)) // move it a bit upwards
+        onView.addConstraint(NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: onView, attribute: .centerY, multiplier: 1.0, constant: 0.0)) // move it a bit upwards
         onView.addConstraint(NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: onView, attribute: .centerX, multiplier: 1.0, constant: 0.0))
         onView.needsUpdateConstraints()
 
         // display the view
-        transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-                self.alpha = 1.0
-                self.transform = CGAffineTransform.identity
-            }, completion: { (finished) -> Void in
-                // When finished wait 1.5 seconds, than hide it
-                let delayTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-                DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                    //self.hideView()
-                }
-        }) 
+        //transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        self.alpha = 1.0
+        //self.transform = CGAffineTransform.identity
+    
     }
 
     /**
@@ -115,28 +102,26 @@ class OverlayView: UIView {
     override func updateConstraints() {
         super.updateConstraints()
 
-        addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 170.0))
-        addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0))
+//        addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 170.0))
+//        addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0))
+        
+        let superViewWidth = delegate?.getDeviceViewWidth_overlayView()
+        let superViewHeight = delegate?.getDeviceViewHeight_overlayView()
+        
+        addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: superViewHeight!))
+        addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: superViewWidth!))
+        
         addConstraint(NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
         addConstraint(NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
         addConstraint(NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0))
         addConstraint(NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
     }
 
-    /**
-     Hides the view with animation
-     */
-    fileprivate func hideView() {
-        UIView.animate(withDuration: 0.3, animations: { () -> Void in
-                self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            }, completion: { (finished) -> Void in
-                self.removeFromSuperview()
-        }) 
-    }
-
 }
 
 protocol OverlayViewDelegate {
-    func pressBtnOverlayView()
+    func pressBtn_overlayView()
+    func getDeviceViewWidth_overlayView() -> CGFloat
+    func getDeviceViewHeight_overlayView() -> CGFloat
 }
 

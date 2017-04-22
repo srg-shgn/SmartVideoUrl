@@ -59,6 +59,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("width = \(self.view.frame.width)")
+        print("height = \(self.view.frame.height)")
+        
         self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         self.player.playerDelegate = self
@@ -146,8 +149,14 @@ extension ViewController: PlayerPlaybackDelegate {
 
 
 extension ViewController: OverlayViewDelegate {
-    func pressBtnOverlayView() {
+    func pressBtn_overlayView() {
         print("CLICK BUTTON ON OVERLAY !!!")
+    }
+    func getDeviceViewWidth_overlayView() -> CGFloat {
+        return view.frame.width
+    }
+    func getDeviceViewHeight_overlayView() -> CGFloat {
+        return view.frame.height
     }
 }
 

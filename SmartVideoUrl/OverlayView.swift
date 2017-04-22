@@ -22,6 +22,10 @@ class OverlayView: UIView {
         delegate?.pressBtnOverlayView()
     }
     
+    @IBAction func pressBtn2(_ sender: Any) {
+        print("PRESS BTN 2 !")
+    }
+    
     // Our custom view from the XIB file
     var view: UIView!
 

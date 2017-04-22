@@ -25,14 +25,14 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qtU-Sk-pR5">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qtU-Sk-pR5">
                     <rect key="frame" x="0.0" y="67" width="200" height="90"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvo-I1-Cne">
-                            <rect key="frame" x="0.0" y="0.0" width="200" height="90"/>
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="90"/>
                             <subviews>
                                 <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQ5-lf-E52">
-                                    <rect key="frame" x="65" y="20" width="70" height="50"/>
+                                    <rect key="frame" x="15" y="20" width="70" height="50"/>
                                     <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="70" id="9YJ-cM-ZAb"/>
@@ -51,6 +51,27 @@
                                 <constraint firstAttribute="height" constant="90" id="BIw-Ir-YC2"/>
                                 <constraint firstItem="cQ5-lf-E52" firstAttribute="centerY" secondItem="yvo-I1-Cne" secondAttribute="centerY" id="pkT-2S-9hg"/>
                                 <constraint firstItem="cQ5-lf-E52" firstAttribute="centerX" secondItem="yvo-I1-Cne" secondAttribute="centerX" id="zHH-aj-6aO"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSh-tA-0gh">
+                            <rect key="frame" x="100" y="0.0" width="100" height="90"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfx-hy-mev">
+                                    <rect key="frame" x="15" y="20" width="70" height="50"/>
+                                    <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="DlO-Se-Sl5"/>
+                                        <constraint firstAttribute="width" constant="70" id="bfc-qh-kHC"/>
+                                    </constraints>
+                                    <state key="normal" title="Button">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Cfx-hy-mev" firstAttribute="centerX" secondItem="OSh-tA-0gh" secondAttribute="centerX" id="POL-xu-40M"/>
+                                <constraint firstItem="Cfx-hy-mev" firstAttribute="centerY" secondItem="OSh-tA-0gh" secondAttribute="centerY" id="beA-UR-m1g"/>
                             </constraints>
                         </view>
                     </subviews>

@@ -25,6 +25,7 @@
 //  SOFTWARE.
 
 import UIKit
+import CoreMedia
 
 let videoUrl = URL(string: "http://www.schlum.com/myr/arte.mp4")!
 
@@ -58,9 +59,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("width = \(self.view.frame.width)")
-        print("height = \(self.view.frame.height)")
         
         self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
@@ -149,13 +147,42 @@ extension ViewController: PlayerPlaybackDelegate {
 
 
 extension ViewController: OverlayViewDelegate {
-    func pressBtn_overlayView() {
+    func playPause_overlayView() -> Bool {
+        var playerIsPlaying = false
         print("CLICK BUTTON ON OVERLAY !!!")
+        print(self.player.playbackState.rawValue)
+        switch (self.player.playbackState.rawValue) {
+        case PlaybackState.paused.rawValue:
+            self.player.playFromCurrentTime()
+            playerIsPlaying = true
+        case PlaybackState.playing.rawValue:
+            self.player.pause()
+            playerIsPlaying = false
+        case PlaybackState.failed.rawValue:
+            self.player.pause()
+            playerIsPlaying = false
+        default:
+            self.player.pause()
+            playerIsPlaying = false
+        }
+        return playerIsPlaying
     }
+    
+    func videoSeekTo_overlayView(to: CMTime) {
+        self.player.seek(to: to)
+    }
+    
+    func currentTime_overlayView() {
+        print(self.player.currentTime)
+    }
+    
     func getDeviceViewWidth_overlayView() -> CGFloat {
+        //récupération du width de la superView
         return view.frame.width
     }
+    
     func getDeviceViewHeight_overlayView() -> CGFloat {
+        //récupération du height de la superView
         return view.frame.height
     }
 }

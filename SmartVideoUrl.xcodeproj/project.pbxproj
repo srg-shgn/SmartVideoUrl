@@ -15,6 +15,8 @@
 		07784B501EAA78F10063AEEC /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07784B4E1EAA78F10063AEEC /* OverlayView.swift */; };
 		07784B511EAA78F10063AEEC /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07784B4F1EAA78F10063AEEC /* OverlayView.xib */; };
 		07784B551EAA813F0063AEEC /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07784B541EAA813E0063AEEC /* Player.swift */; };
+		07A1A41C1EAD2D9500C56EFE /* VideoTimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A1A41A1EAD2D9500C56EFE /* VideoTimerModel.swift */; };
+		07A1A41D1EAD2D9500C56EFE /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A1A41B1EAD2D9500C56EFE /* Entities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		07784B4E1EAA78F10063AEEC /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		07784B4F1EAA78F10063AEEC /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		07784B541EAA813E0063AEEC /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		07A1A41A1EAD2D9500C56EFE /* VideoTimerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTimerModel.swift; sourceTree = "<group>"; };
+		07A1A41B1EAD2D9500C56EFE /* Entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +64,35 @@
 		07784B3B1EAA760C0063AEEC /* SmartVideoUrl */ = {
 			isa = PBXGroup;
 			children = (
-				07784B4E1EAA78F10063AEEC /* OverlayView.swift */,
-				07784B4F1EAA78F10063AEEC /* OverlayView.xib */,
+				07A1A4191EAD2D8900C56EFE /* Model */,
+				07A1A4141EAD2CED00C56EFE /* Presentation */,
 				07784B3C1EAA760C0063AEEC /* AppDelegate.swift */,
-				07784B3E1EAA760C0063AEEC /* ViewController.swift */,
-				07784B541EAA813E0063AEEC /* Player.swift */,
-				07784B401EAA760C0063AEEC /* Main.storyboard */,
 				07784B431EAA760C0063AEEC /* Assets.xcassets */,
 				07784B451EAA760C0063AEEC /* LaunchScreen.storyboard */,
 				07784B481EAA760C0063AEEC /* Info.plist */,
 			);
 			path = SmartVideoUrl;
+			sourceTree = "<group>";
+		};
+		07A1A4141EAD2CED00C56EFE /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				07784B401EAA760C0063AEEC /* Main.storyboard */,
+				07784B3E1EAA760C0063AEEC /* ViewController.swift */,
+				07784B541EAA813E0063AEEC /* Player.swift */,
+				07784B4E1EAA78F10063AEEC /* OverlayView.swift */,
+				07784B4F1EAA78F10063AEEC /* OverlayView.xib */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		07A1A4191EAD2D8900C56EFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				07A1A41A1EAD2D9500C56EFE /* VideoTimerModel.swift */,
+				07A1A41B1EAD2D9500C56EFE /* Entities.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,9 +169,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A1A41D1EAD2D9500C56EFE /* Entities.swift in Sources */,
 				07784B551EAA813F0063AEEC /* Player.swift in Sources */,
 				07784B501EAA78F10063AEEC /* OverlayView.swift in Sources */,
 				07784B3F1EAA760C0063AEEC /* ViewController.swift in Sources */,
+				07A1A41C1EAD2D9500C56EFE /* VideoTimerModel.swift in Sources */,
 				07784B3D1EAA760C0063AEEC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +340,7 @@
 				07784B4D1EAA760C0063AEEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

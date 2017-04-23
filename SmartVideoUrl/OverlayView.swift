@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreMedia
 
 /// Custom view that displays when a user adds a Car to the Garage (Saves it locally)
 class OverlayView: UIView {
@@ -16,18 +17,26 @@ class OverlayView: UIView {
     /// Label to show the empty text
     @IBOutlet weak var titleLabel: UILabel!
 
+    @IBOutlet weak var playPauseBtnLbl: UIButton!
 
     @IBAction func pressPausePlay(_ sender: Any) {
-        print("AAAAAAAA")
-        delegate?.pressBtn_overlayView()
+        let playerIsPlaying = delegate?.playPause_overlayView()
+        if playerIsPlaying == false {
+            playPauseBtnLbl.setTitle("Play", for: .normal)
+        } else {
+            playPauseBtnLbl.setTitle("Pause", for: .normal)
+        }
     }
     
     @IBAction func pressBtn1(_ sender: Any) {
         print("PRESS BTN 1 !")
+        let newTime = CMTime.init(seconds: 600, preferredTimescale: CMTimeScale.init(1))
+        delegate?.videoSeekTo_overlayView(to: newTime)
     }
     
     @IBAction func pressBtn2(_ sender: Any) {
         print("PRESS BTN 2 !")
+        delegate?.currentTime_overlayView()
     }
     
     @IBAction func pressBtn3(_ sender: Any) {
@@ -125,7 +134,9 @@ class OverlayView: UIView {
 }
 
 protocol OverlayViewDelegate {
-    func pressBtn_overlayView()
+    func playPause_overlayView() -> Bool
+    func videoSeekTo_overlayView(to: CMTime)
+    func currentTime_overlayView()
     func getDeviceViewWidth_overlayView() -> CGFloat
     func getDeviceViewHeight_overlayView() -> CGFloat
 }

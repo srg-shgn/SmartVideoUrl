@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverlayView" customModule="SmartVideoUrl" customModuleProvider="target">
             <connections>
+                <outlet property="currentTimeLabel" destination="uuG-WR-5Js" id="ujz-rb-6sg"/>
                 <outlet property="playPauseBtnLbl" destination="AIV-Zl-L7x" id="y7k-Rl-Gur"/>
                 <outlet property="titleLabel" destination="38P-fh-Tln" id="0X0-fD-x6V"/>
             </connections>

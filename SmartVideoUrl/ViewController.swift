@@ -31,6 +31,8 @@ let videoUrl = URL(string: "http://www.schlum.com/myr/arte.mp4")!
 
 class ViewController: UIViewController {
     
+    var timerTick: VideoTimerModel?
+    
     fileprivate var player: Player
     
     // MARK: object lifecycle
@@ -117,6 +119,10 @@ extension ViewController {
 extension ViewController: PlayerDelegate {
     
     func playerReady(_ player: Player) {
+        //GESTION DU VideoTimerModel
+        timerTick = VideoTimerModel()
+        timerTick?.delegate = self
+        timerTick?.timerStart()
     }
     
     func playerPlaybackStateDidChange(_ player: Player) {
@@ -165,6 +171,13 @@ extension ViewController: OverlayViewDelegate {
             self.player.pause()
             playerIsPlaying = false
         }
+        
+        if playerIsPlaying == false {
+            timerTick?.timerStop()
+        } else {
+            timerTick?.timerStart()
+        }
+        
         return playerIsPlaying
     }
     
@@ -186,4 +199,12 @@ extension ViewController: OverlayViewDelegate {
         return view.frame.height
     }
 }
+
+extension ViewController: TimerVideoDelegate {
+    func timerVideoTick() {
+        //print("\(self.player.currentTime)")
+        self.player.overlayView.currentTimeLabel.text = "\(self.player.currentTime)"
+    }
+}
+
 

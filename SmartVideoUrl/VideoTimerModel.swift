@@ -14,6 +14,7 @@ class VideoTimerModel {
     var delegate: TimerVideoDelegate?
     
     func timerStart() {
+        //print("START TIMER TICK !")
         myTimer = Timer.scheduledTimer(withTimeInterval: 0, repeats: true, block: { (Timer) in
             self.delegate?.timerVideoTick()
         })

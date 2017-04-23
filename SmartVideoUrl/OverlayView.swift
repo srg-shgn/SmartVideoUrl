@@ -16,8 +16,8 @@ class OverlayView: UIView {
     
     /// Label to show the empty text
     @IBOutlet weak var titleLabel: UILabel!
-
     @IBOutlet weak var playPauseBtnLbl: UIButton!
+    @IBOutlet weak var currentTimeLabel: UILabel!
 
     @IBAction func pressPausePlay(_ sender: Any) {
         let playerIsPlaying = delegate?.playPause_overlayView()

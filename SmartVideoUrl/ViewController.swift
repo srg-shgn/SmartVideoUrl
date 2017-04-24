@@ -257,7 +257,21 @@ extension ViewController: OverlayViewDelegate {
         
         switch (self.player.playbackState.rawValue) {
         case PlaybackState.paused.rawValue:
-            self.player.playFromCurrentTime()
+            if interactionTypeInCourse == .pause {
+                interactionTypeInCourse = .none
+                hideInteraction()
+                
+                let destTime = self.player.currentTime + 1
+                    
+                //on ajoute 0,05 ms pour sortir du range de la pause
+                let newTime = CMTime.init(seconds: destTime, preferredTimescale: CMTimeScale.init(100))
+                print("***** \(newTime) *****")
+                videoSeekTo_overlayView(to: newTime)
+                
+                
+            } else {
+                self.player.playFromCurrentTime()
+            }
             playerIsPlaying = true
         case PlaybackState.playing.rawValue:
             self.player.pause()
@@ -283,6 +297,7 @@ extension ViewController: OverlayViewDelegate {
         hideInteraction()
         self.player.seek(to: to)
         self.player.playFromCurrentTime()
+        self.player.overlayView.playPauseBtnLbl.setTitle("Pause", for: .normal)
     }
     
     func getDeviceViewWidth_overlayView() -> CGFloat {

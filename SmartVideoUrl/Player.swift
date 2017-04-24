@@ -340,14 +340,14 @@ open class Player: UIViewController {
 
     /// Begins playback of the media from the current time.
     open func playFromCurrentTime() {
-        print("*** play ***")
+        //print("*** play ***")
         self.playbackState = .playing
         self._avplayer.play()
     }
 
     /// Pauses playback of the media.
     open func pause() {
-        print("*** pause ***")
+        //print("*** pause ***")
         if self.playbackState != .playing {
             return
         }

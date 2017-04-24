@@ -33,6 +33,10 @@ class ViewController: UIViewController {
     
     var timerTick: VideoTimerModel?
     
+    //if -1 no interaction is displayed
+    var interactionIdInCourse:Int = -1
+    var interactionTypeInCourse: Interaction.InteractionType = .none
+    
     fileprivate var player: Player
     
     // MARK: object lifecycle
@@ -83,12 +87,107 @@ class ViewController: UIViewController {
         //GESTION DE L'OVERLAYVIEW
         self.player.overlayView.displayView(view)
         self.player.overlayView.delegate = self
+        hideInteraction()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.player.playFromBeginning()
+    }
+    
+    
+    
+    func displayCurrentTime() {
+
+        let currentTime = "\(self.player.currentTime)"
+        //let currentTimeDouble = Double(currentTime)?.roundTo(places: 2)
+        
+        self.player.overlayView.currentTimeLabel.text = currentTime
+        
+        //timeLbl.text = String(currentTimeDouble!)
+        //timeLbl.text = convertToInt(currentTime: currentTime)
+        
+        
+        for interaction in tableInteraction {
+            if let currentTimeFloat = Float(currentTime) {
+                
+                switch interaction.interactionType {
+                case .pause:
+                    if currentTimeFloat >= interaction.displayStart && currentTimeFloat < interaction.displayStart + 0.05 {
+                        interactionIdInCourse = interaction.id
+                        interactionTypeInCourse = .pause
+                        self.player.pause()
+                        self.player.overlayView.playPauseBtnLbl.setTitle("Play", for: .normal)
+                        
+                        if let pauseMsg = interaction.msg {
+                            self.player.overlayView.titleLabel.text = pauseMsg
+                            self.player.overlayView.titleLabel.isHidden = false
+                        }
+                        if let interBtn1 = interaction.interBtn1 {
+                            self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
+                            self.player.overlayView.destBtn1 = interBtn1.goto
+                            self.player.overlayView.btnView1.isHidden = false
+                        }
+                        if let interBtn2 = interaction.interBtn2 {
+                            self.player.overlayView.btn2.setTitle(interBtn2.label, for: .normal)
+                            self.player.overlayView.destBtn2 = interBtn2.goto
+                            self.player.overlayView.btnView2.isHidden = false
+                        }
+                        if let interBtn3 = interaction.interBtn3 {
+                            self.player.overlayView.btn3.setTitle(interBtn3.label, for: .normal)
+                            self.player.overlayView.destBtn3 = interBtn3.goto
+                            self.player.overlayView.btnView3.isHidden = false
+                        }
+                    }
+                    break
+                case .display:
+                    if let displayEnd = interaction.displayEnd {
+                        if currentTimeFloat >= interaction.displayStart && currentTimeFloat <= displayEnd {
+                            interactionIdInCourse = interaction.id
+                            interactionTypeInCourse = .display
+                            if let displayMsg = interaction.msg {
+                                self.player.overlayView.titleLabel.text = displayMsg
+                                self.player.overlayView.titleLabel.isHidden = false
+                            }
+                            if let interBtn1 = interaction.interBtn1 {
+                                self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
+                                self.player.overlayView.destBtn1 = interBtn1.goto
+                                self.player.overlayView.btnView1.isHidden = false
+                            }
+                            if let interBtn2 = interaction.interBtn2 {
+                                self.player.overlayView.btn2.setTitle(interBtn2.label, for: .normal)
+                                self.player.overlayView.destBtn2 = interBtn2.goto
+                                self.player.overlayView.btnView2.isHidden = false
+                            }
+                            if let interBtn3 = interaction.interBtn3 {
+                                self.player.overlayView.btn3.setTitle(interBtn3.label, for: .normal)
+                                self.player.overlayView.destBtn3 = interBtn3.goto
+                                self.player.overlayView.btnView3.isHidden = false
+                            }
+                        } else {
+                            if interactionIdInCourse == interaction.id {
+                                hideInteraction()
+                            }
+                        }
+                    }
+                    break
+                case .none:
+                    break
+                }
+                
+            }
+        }
+    }
+    
+    
+    func hideInteraction() {
+        interactionIdInCourse = -1
+        interactionTypeInCourse = .none
+        self.player.overlayView.btnView1.isHidden = true
+        self.player.overlayView.btnView2.isHidden = true
+        self.player.overlayView.btnView3.isHidden = true
+        self.player.overlayView.titleLabel.isHidden = true
     }
     
 }
@@ -155,8 +254,7 @@ extension ViewController: PlayerPlaybackDelegate {
 extension ViewController: OverlayViewDelegate {
     func playPause_overlayView() -> Bool {
         var playerIsPlaying = false
-        print("CLICK BUTTON ON OVERLAY !!!")
-        print(self.player.playbackState.rawValue)
+        
         switch (self.player.playbackState.rawValue) {
         case PlaybackState.paused.rawValue:
             self.player.playFromCurrentTime()
@@ -182,11 +280,9 @@ extension ViewController: OverlayViewDelegate {
     }
     
     func videoSeekTo_overlayView(to: CMTime) {
+        hideInteraction()
         self.player.seek(to: to)
-    }
-    
-    func currentTime_overlayView() {
-        print(self.player.currentTime)
+        self.player.playFromCurrentTime()
     }
     
     func getDeviceViewWidth_overlayView() -> CGFloat {
@@ -202,8 +298,7 @@ extension ViewController: OverlayViewDelegate {
 
 extension ViewController: TimerVideoDelegate {
     func timerVideoTick() {
-        //print("\(self.player.currentTime)")
-        self.player.overlayView.currentTimeLabel.text = "\(self.player.currentTime)"
+        displayCurrentTime()
     }
 }
 

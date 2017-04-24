@@ -9,8 +9,8 @@
 import Foundation
 
 struct InteractionBtn {
-    let label: String, goto: Float?
-    init(label: String, goto: Float?) {
+    let label: String, goto: Double?
+    init(label: String, goto: Double?) {
         self.label = label
         self.goto = goto
     }

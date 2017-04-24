@@ -19,6 +19,18 @@ class OverlayView: UIView {
     @IBOutlet weak var playPauseBtnLbl: UIButton!
     @IBOutlet weak var currentTimeLabel: UILabel!
 
+    @IBOutlet weak var btnView1: UIView!
+    @IBOutlet weak var btnView2: UIView!
+    @IBOutlet weak var btnView3: UIView!
+    
+    @IBOutlet weak var btn1: UIButton!
+    @IBOutlet weak var btn2: UIButton!
+    @IBOutlet weak var btn3: UIButton!
+    
+    var destBtn1: Double?
+    var destBtn2: Double?
+    var destBtn3: Double?
+    
     @IBAction func pressPausePlay(_ sender: Any) {
         let playerIsPlaying = delegate?.playPause_overlayView()
         if playerIsPlaying == false {
@@ -29,18 +41,24 @@ class OverlayView: UIView {
     }
     
     @IBAction func pressBtn1(_ sender: Any) {
-        print("PRESS BTN 1 !")
-        let newTime = CMTime.init(seconds: 600, preferredTimescale: CMTimeScale.init(1))
-        delegate?.videoSeekTo_overlayView(to: newTime)
+        if let destBtn = destBtn1 {
+            let newTime = CMTime.init(seconds: destBtn, preferredTimescale: CMTimeScale.init(1))
+            delegate?.videoSeekTo_overlayView(to: newTime)
+        }
     }
     
     @IBAction func pressBtn2(_ sender: Any) {
-        print("PRESS BTN 2 !")
-        delegate?.currentTime_overlayView()
+        if let destBtn = destBtn2 {
+            let newTime = CMTime.init(seconds: destBtn, preferredTimescale: CMTimeScale.init(1))
+            delegate?.videoSeekTo_overlayView(to: newTime)
+        }
     }
     
     @IBAction func pressBtn3(_ sender: Any) {
-        print("PRESS BTN 3 !")
+        if let destBtn = destBtn3 {
+            let newTime = CMTime.init(seconds: destBtn, preferredTimescale: CMTimeScale.init(1))
+            delegate?.videoSeekTo_overlayView(to: newTime)
+        }
     }
     
     // Our custom view from the XIB file
@@ -136,7 +154,6 @@ class OverlayView: UIView {
 protocol OverlayViewDelegate {
     func playPause_overlayView() -> Bool
     func videoSeekTo_overlayView(to: CMTime)
-    func currentTime_overlayView()
     func getDeviceViewWidth_overlayView() -> CGFloat
     func getDeviceViewHeight_overlayView() -> CGFloat
 }

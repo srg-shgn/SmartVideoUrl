@@ -11,6 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverlayView" customModule="SmartVideoUrl" customModuleProvider="target">
             <connections>
+                <outlet property="btn1" destination="cQ5-lf-E52" id="Udp-dg-OdO"/>
+                <outlet property="btn2" destination="QJm-1V-uWV" id="OKR-Uo-tyv"/>
+                <outlet property="btn3" destination="bul-cG-o6f" id="G5R-Rx-jKW"/>
+                <outlet property="btnView1" destination="yvo-I1-Cne" id="HcZ-Di-T5u"/>
+                <outlet property="btnView2" destination="Gau-aP-Ca3" id="lEk-Ji-Cpd"/>
+                <outlet property="btnView3" destination="h7M-p5-TY0" id="rZS-N3-rHP"/>
                 <outlet property="currentTimeLabel" destination="uuG-WR-5Js" id="ujz-rb-6sg"/>
                 <outlet property="playPauseBtnLbl" destination="AIV-Zl-L7x" id="y7k-Rl-Gur"/>
                 <outlet property="titleLabel" destination="38P-fh-Tln" id="0X0-fD-x6V"/>

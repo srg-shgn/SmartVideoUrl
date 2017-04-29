@@ -263,7 +263,7 @@ extension ViewController: OverlayViewDelegate {
                 
                 let destTime = self.player.currentTime + 1
                     
-                //on ajoute 0,05 ms pour sortir du range de la pause
+                //on ajoute 1s pour sortir du range de la pause
                 let newTime = CMTime.init(seconds: destTime, preferredTimescale: CMTimeScale.init(100))
                 print("***** \(newTime) *****")
                 videoSeekTo_overlayView(to: newTime)

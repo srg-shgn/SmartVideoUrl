@@ -27,9 +27,13 @@ class OverlayView: UIView {
     @IBOutlet weak var btn2: UIButton!
     @IBOutlet weak var btn3: UIButton!
     
-    var destBtn1: Double?
-    var destBtn2: Double?
-    var destBtn3: Double?
+    var destBtn1: Any?
+    var destBtn2: Any?
+    var destBtn3: Any?
+    
+    var destTypeBtn1: InteractionBtn.DestinationType!
+    var destTypeBtn2: InteractionBtn.DestinationType!
+    var destTypeBtn3: InteractionBtn.DestinationType!
     
     @IBAction func pressPausePlay(_ sender: Any) {
         let playerIsPlaying = delegate?.playPause_overlayView()
@@ -42,22 +46,19 @@ class OverlayView: UIView {
     
     @IBAction func pressBtn1(_ sender: Any) {
         if let destBtn = destBtn1 {
-            let newTime = CMTime.init(seconds: destBtn, preferredTimescale: CMTimeScale.init(1))
-            delegate?.videoSeekTo_overlayView(to: newTime)
+            manageDestination(dest: destBtn, destType: destTypeBtn1)
         }
     }
     
     @IBAction func pressBtn2(_ sender: Any) {
         if let destBtn = destBtn2 {
-            let newTime = CMTime.init(seconds: destBtn, preferredTimescale: CMTimeScale.init(1))
-            delegate?.videoSeekTo_overlayView(to: newTime)
+            manageDestination(dest: destBtn, destType: destTypeBtn2)
         }
     }
     
     @IBAction func pressBtn3(_ sender: Any) {
         if let destBtn = destBtn3 {
-            let newTime = CMTime.init(seconds: destBtn, preferredTimescale: CMTimeScale.init(1))
-            delegate?.videoSeekTo_overlayView(to: newTime)
+            manageDestination(dest: destBtn, destType: destTypeBtn3)
         }
     }
     
@@ -148,12 +149,23 @@ class OverlayView: UIView {
         addConstraint(NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0))
         addConstraint(NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
     }
+    
+    private func manageDestination(dest: Any, destType: InteractionBtn.DestinationType) {
+        if destType == InteractionBtn.DestinationType.time {
+            let destBtn = Double(dest as! Int)
+            let newTime = CMTime.init(seconds: destBtn, preferredTimescale: CMTimeScale.init(1))
+            delegate?.videoSeekTo_overlayView(to: newTime)
+        } else {
+            delegate?.loadNewVideo_overlayView(videoName: dest as! String)
+        }
+    }
 
 }
 
 protocol OverlayViewDelegate {
     func playPause_overlayView() -> Bool
     func videoSeekTo_overlayView(to: CMTime)
+    func loadNewVideo_overlayView(videoName: String)
     func getDeviceViewWidth_overlayView() -> CGFloat
     func getDeviceViewHeight_overlayView() -> CGFloat
 }

@@ -28,6 +28,7 @@ import UIKit
 import CoreMedia
 
 let videoUrl = URL(string: "http://www.schlum.com/myr/arte.mp4")!
+let videoUrl2 = URL(string: "http://www.html5videoplayer.net/videos/toystory.mp4")
 
 class ViewController: UIViewController {
     
@@ -126,16 +127,20 @@ class ViewController: UIViewController {
                         }
                         if let interBtn1 = interaction.interBtn1 {
                             self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
+                            let destType1 = interBtn1.destinationType
+                            self.player.overlayView.destTypeBtn1 = destType1
                             self.player.overlayView.destBtn1 = interBtn1.goto
                             self.player.overlayView.btnView1.isHidden = false
                         }
                         if let interBtn2 = interaction.interBtn2 {
                             self.player.overlayView.btn2.setTitle(interBtn2.label, for: .normal)
+                            self.player.overlayView.destTypeBtn2 = interBtn2.destinationType
                             self.player.overlayView.destBtn2 = interBtn2.goto
                             self.player.overlayView.btnView2.isHidden = false
                         }
                         if let interBtn3 = interaction.interBtn3 {
                             self.player.overlayView.btn3.setTitle(interBtn3.label, for: .normal)
+                            self.player.overlayView.destTypeBtn3 = interBtn3.destinationType
                             self.player.overlayView.destBtn3 = interBtn3.goto
                             self.player.overlayView.btnView3.isHidden = false
                         }
@@ -152,16 +157,19 @@ class ViewController: UIViewController {
                             }
                             if let interBtn1 = interaction.interBtn1 {
                                 self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
+                                self.player.overlayView.destTypeBtn1 = interBtn1.destinationType
                                 self.player.overlayView.destBtn1 = interBtn1.goto
                                 self.player.overlayView.btnView1.isHidden = false
                             }
                             if let interBtn2 = interaction.interBtn2 {
                                 self.player.overlayView.btn2.setTitle(interBtn2.label, for: .normal)
+                                self.player.overlayView.destTypeBtn2 = interBtn2.destinationType
                                 self.player.overlayView.destBtn2 = interBtn2.goto
                                 self.player.overlayView.btnView2.isHidden = false
                             }
                             if let interBtn3 = interaction.interBtn3 {
                                 self.player.overlayView.btn3.setTitle(interBtn3.label, for: .normal)
+                                self.player.overlayView.destTypeBtn3 = interBtn3.destinationType
                                 self.player.overlayView.destBtn3 = interBtn3.goto
                                 self.player.overlayView.btnView3.isHidden = false
                             }
@@ -298,6 +306,10 @@ extension ViewController: OverlayViewDelegate {
         self.player.seek(to: to)
         self.player.playFromCurrentTime()
         self.player.overlayView.playPauseBtnLbl.setTitle("Pause", for: .normal)
+    }
+    
+    func loadNewVideo_overlayView(videoName: String) {
+        self.player.url = videoUrl2
     }
     
     func getDeviceViewWidth_overlayView() -> CGFloat {

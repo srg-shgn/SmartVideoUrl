@@ -9,12 +9,11 @@
 import Foundation
 
 struct InteractionBtn {
-    enum DestinationType { case time, videoName }
-    let label: String, destinationType: DestinationType, goto: Any?
-    init(label: String, destinationType: DestinationType, goto: Any?) {
+    let label: String, jumpToVideoName: String?, goto: Double?
+    init(label: String, jumpToVideoName: String?, goto: Double?) {
         self.label = label
-        self.destinationType = destinationType
-        self.goto = goto
+        self.jumpToVideoName = jumpToVideoName //si nil, on reste sur la vidéo courante
+        self.goto = goto //si nil, on lace à 0
     }
 }
 
@@ -52,23 +51,23 @@ var tableInteraction: [Interaction] = [
     Interaction(interactionType: .pause,
                 id: 1,
                 msg: "Presser l'un des boutons !",
-                interBtn1: InteractionBtn(label: "Disney", destinationType: .videoName, goto: "disney"),
-                interBtn2: InteractionBtn(label: "go 60", destinationType: .time, goto: 60),
+                interBtn1: InteractionBtn(label: "Disney", jumpToVideoName: "Disney", goto: 55),
+                interBtn2: InteractionBtn(label: "go 60", jumpToVideoName: nil, goto: 60),
                 interBtn3: nil,
                 displayStart: 5,
                 displayEnd: nil),
     Interaction(interactionType: .pause,
                 id: 2,
                 msg: nil,
-                interBtn1: InteractionBtn(label: "go 30", destinationType: .time, goto: 50),
-                interBtn2: InteractionBtn(label: "go 65", destinationType: .time, goto: 65),
-                interBtn3: InteractionBtn(label: "go 250", destinationType: .time, goto: 250),
+                interBtn1: InteractionBtn(label: "go 30", jumpToVideoName: nil, goto: 50),
+                interBtn2: InteractionBtn(label: "go 65", jumpToVideoName: nil, goto: 65),
+                interBtn3: InteractionBtn(label: "go 250", jumpToVideoName: nil, goto: 250),
                 displayStart: 20,
                 displayEnd: nil),
     Interaction(interactionType: .display,
                 id: 3,
                 msg: "Presser le bouton avant qu'il ne disparaisse...",
-                interBtn1: InteractionBtn(label: "go 80", destinationType: .time, goto: 80),
+                interBtn1: InteractionBtn(label: "go 80", jumpToVideoName: nil, goto: 80),
                 interBtn2: nil,
                 interBtn3: nil,
                 displayStart: 52,
@@ -76,9 +75,9 @@ var tableInteraction: [Interaction] = [
     Interaction(interactionType: .display,
                 id: 4,
                 msg: nil,
-                interBtn1: InteractionBtn(label: "go 100", destinationType: .time, goto: 100),
-                interBtn2: InteractionBtn(label: "go 150", destinationType: .time, goto: 150),
-                interBtn3: InteractionBtn(label: "go 300", destinationType: .time, goto: 300),
+                interBtn1: InteractionBtn(label: "go 100", jumpToVideoName: nil, goto: 100),
+                interBtn2: InteractionBtn(label: "go 150", jumpToVideoName: nil, goto: 150),
+                interBtn3: InteractionBtn(label: "go 300", jumpToVideoName: nil, goto: 300),
                 displayStart: 70,
                 displayEnd: 85),
     Interaction(interactionType: .display,

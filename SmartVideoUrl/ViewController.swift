@@ -38,6 +38,9 @@ class ViewController: UIViewController {
     var interactionIdInCourse:Int = -1
     var interactionTypeInCourse: Interaction.InteractionType = .none
     
+    var loadingNewVideo: Bool = false
+    var startTimeNewVideo: Double?
+    
     fileprivate var player: Player
     
     // MARK: object lifecycle
@@ -97,8 +100,6 @@ class ViewController: UIViewController {
         self.player.playFromBeginning()
     }
     
-    
-    
     func displayCurrentTime() {
 
         let currentTime = "\(self.player.currentTime)"
@@ -127,20 +128,19 @@ class ViewController: UIViewController {
                         }
                         if let interBtn1 = interaction.interBtn1 {
                             self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
-                            let destType1 = interBtn1.destinationType
-                            self.player.overlayView.destTypeBtn1 = destType1
+                            self.player.overlayView.jumpToVideoName1 = interBtn1.jumpToVideoName
                             self.player.overlayView.destBtn1 = interBtn1.goto
                             self.player.overlayView.btnView1.isHidden = false
                         }
                         if let interBtn2 = interaction.interBtn2 {
                             self.player.overlayView.btn2.setTitle(interBtn2.label, for: .normal)
-                            self.player.overlayView.destTypeBtn2 = interBtn2.destinationType
+                            self.player.overlayView.jumpToVideoName2 = interBtn2.jumpToVideoName
                             self.player.overlayView.destBtn2 = interBtn2.goto
                             self.player.overlayView.btnView2.isHidden = false
                         }
                         if let interBtn3 = interaction.interBtn3 {
                             self.player.overlayView.btn3.setTitle(interBtn3.label, for: .normal)
-                            self.player.overlayView.destTypeBtn3 = interBtn3.destinationType
+                            self.player.overlayView.jumpToVideoName3 = interBtn3.jumpToVideoName
                             self.player.overlayView.destBtn3 = interBtn3.goto
                             self.player.overlayView.btnView3.isHidden = false
                         }
@@ -157,19 +157,19 @@ class ViewController: UIViewController {
                             }
                             if let interBtn1 = interaction.interBtn1 {
                                 self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
-                                self.player.overlayView.destTypeBtn1 = interBtn1.destinationType
+                                self.player.overlayView.jumpToVideoName1 = interBtn1.jumpToVideoName
                                 self.player.overlayView.destBtn1 = interBtn1.goto
                                 self.player.overlayView.btnView1.isHidden = false
                             }
                             if let interBtn2 = interaction.interBtn2 {
                                 self.player.overlayView.btn2.setTitle(interBtn2.label, for: .normal)
-                                self.player.overlayView.destTypeBtn2 = interBtn2.destinationType
+                                self.player.overlayView.jumpToVideoName2 = interBtn2.jumpToVideoName
                                 self.player.overlayView.destBtn2 = interBtn2.goto
                                 self.player.overlayView.btnView2.isHidden = false
                             }
                             if let interBtn3 = interaction.interBtn3 {
                                 self.player.overlayView.btn3.setTitle(interBtn3.label, for: .normal)
-                                self.player.overlayView.destTypeBtn3 = interBtn3.destinationType
+                                self.player.overlayView.jumpToVideoName3 = interBtn3.jumpToVideoName
                                 self.player.overlayView.destBtn3 = interBtn3.goto
                                 self.player.overlayView.btnView3.isHidden = false
                             }
@@ -226,6 +226,17 @@ extension ViewController {
 extension ViewController: PlayerDelegate {
     
     func playerReady(_ player: Player) {
+        //si on charge une nouvelle vidéo on doit vérifier qu'elle est chargé avant de déplacer la tête de lecture
+        if loadingNewVideo == true {
+            if let startTime = startTimeNewVideo {
+                let newTime = CMTime.init(seconds: startTime, preferredTimescale: CMTimeScale.init(1))
+                self.player.seek(to: newTime)
+            }
+            self.player.playFromCurrentTime()
+            loadingNewVideo = false
+            self.player.view.isHidden = false    
+        }
+        
         //GESTION DU VideoTimerModel
         timerTick = VideoTimerModel()
         timerTick?.delegate = self
@@ -276,7 +287,6 @@ extension ViewController: OverlayViewDelegate {
                 print("***** \(newTime) *****")
                 videoSeekTo_overlayView(to: newTime)
                 
-                
             } else {
                 self.player.playFromCurrentTime()
             }
@@ -308,11 +318,17 @@ extension ViewController: OverlayViewDelegate {
         self.player.overlayView.playPauseBtnLbl.setTitle("Pause", for: .normal)
     }
     
-    func loadNewVideo_overlayView(videoName: String) {
+    func loadNewVideo_overlayView(videoName: String, destTime: Double?) {
         tableInteraction = []
+        self.player.view.isHidden = true
+        
+        //on passe loadingNewVideo à true pour que la tête de lecture se positionne et se lance quand la vidép est chargé
+        //le test de loadingNewVideo se fait dans func playerReady
+        loadingNewVideo = true
+        startTimeNewVideo = destTime
         self.player.url = videoUrl2
         hideInteraction()
-        self.player.playFromCurrentTime()
+        
         self.player.overlayView.playPauseBtnLbl.setTitle("Pause", for: .normal)
     }
     

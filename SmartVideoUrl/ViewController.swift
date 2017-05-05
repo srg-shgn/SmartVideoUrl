@@ -309,7 +309,11 @@ extension ViewController: OverlayViewDelegate {
     }
     
     func loadNewVideo_overlayView(videoName: String) {
+        tableInteraction = []
         self.player.url = videoUrl2
+        hideInteraction()
+        self.player.playFromCurrentTime()
+        self.player.overlayView.playPauseBtnLbl.setTitle("Pause", for: .normal)
     }
     
     func getDeviceViewWidth_overlayView() -> CGFloat {

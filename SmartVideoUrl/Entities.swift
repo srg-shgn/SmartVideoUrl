@@ -8,6 +8,22 @@
 
 import Foundation
 
+struct Chapitre {
+    let name: String
+    let start: Float
+    let end: Float
+    init(name: String, start: Float, end: Float) {
+        self.name = name
+        self.start = start
+        self.end = end
+    }
+}
+
+var tableChapitre: [Chapitre] = [
+    Chapitre(name: "chapitre un", start: 0, end: 10),
+    Chapitre(name: "chapitre deux", start: 10, end: 20)
+]
+
 struct InteractionBtn {
     let label: String, jumpToVideoName: String?, goto: Double?
     init(label: String, jumpToVideoName: String?, goto: Double?) {

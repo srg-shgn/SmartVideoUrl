@@ -111,8 +111,20 @@ class ViewController: UIViewController {
         //timeLbl.text = convertToInt(currentTime: currentTime)
         
         
+        let currentTimeFloat = Float(currentTime)!
+        
+        //Affichage du chapitre si existe
+        self.player.overlayView.chapterLabel.text = ""
+        if(tableChapitre.count > 0) {
+            for chapitre in tableChapitre {
+                if currentTimeFloat >= chapitre.start && currentTimeFloat < chapitre.end {
+                    self.player.overlayView.chapterLabel.text = chapitre.name
+                }
+            }
+        }
+        
         for interaction in tableInteraction {
-            if let currentTimeFloat = Float(currentTime) {
+           // if let currentTimeFloat = Float(currentTime) {
                 
                 switch interaction.interactionType {
                 case .pause:
@@ -184,7 +196,7 @@ class ViewController: UIViewController {
                     break
                 }
                 
-            }
+            //}
         }
     }
     

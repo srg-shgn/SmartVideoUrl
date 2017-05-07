@@ -18,7 +18,8 @@ class OverlayView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var playPauseBtnLbl: UIButton!
     @IBOutlet weak var currentTimeLabel: UILabel!
-
+    @IBOutlet weak var chapterLabel: UILabel!
+    
     @IBOutlet weak var btnView1: UIView!
     @IBOutlet weak var btnView2: UIView!
     @IBOutlet weak var btnView3: UIView!

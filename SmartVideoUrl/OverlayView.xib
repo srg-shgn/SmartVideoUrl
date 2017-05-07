@@ -17,6 +17,7 @@
                 <outlet property="btnView1" destination="yvo-I1-Cne" id="HcZ-Di-T5u"/>
                 <outlet property="btnView2" destination="Gau-aP-Ca3" id="lEk-Ji-Cpd"/>
                 <outlet property="btnView3" destination="h7M-p5-TY0" id="rZS-N3-rHP"/>
+                <outlet property="chapterLabel" destination="Okb-zU-jr3" id="dge-mJ-PNn"/>
                 <outlet property="currentTimeLabel" destination="uuG-WR-5Js" id="ujz-rb-6sg"/>
                 <outlet property="playPauseBtnLbl" destination="AIV-Zl-L7x" id="y7k-Rl-Gur"/>
                 <outlet property="titleLabel" destination="38P-fh-Tln" id="0X0-fD-x6V"/>
@@ -27,12 +28,26 @@
             <rect key="frame" x="0.0" y="0.0" width="367" height="244"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuG-WR-5Js">
-                    <rect key="frame" x="5" y="5" width="362" height="20"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="doR-Ap-iDH">
+                    <rect key="frame" x="5" y="5" width="357" height="25"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuG-WR-5Js">
+                            <rect key="frame" x="0.0" y="2.5" width="178.5" height="20"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-zU-jr3">
+                            <rect key="frame" x="178.5" y="2.5" width="178.5" height="20"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="jQk-Vn-lsN"/>
+                    </constraints>
+                </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved to garage" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38P-fh-Tln">
                     <rect key="frame" x="105.5" y="57" width="156" height="24"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
@@ -145,13 +160,13 @@
                 </view>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="uuG-WR-5Js" secondAttribute="trailing" id="0Zd-cm-uSg"/>
                 <constraint firstAttribute="trailing" secondItem="hS2-Qm-FpP" secondAttribute="trailing" id="1OD-Tj-pRS"/>
+                <constraint firstItem="doR-Ap-iDH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="900-f2-J6A"/>
                 <constraint firstItem="38P-fh-Tln" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="9x4-mG-Dlp"/>
-                <constraint firstItem="uuG-WR-5Js" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="Kfm-ZA-FxZ"/>
+                <constraint firstAttribute="trailing" secondItem="doR-Ap-iDH" secondAttribute="trailing" constant="5" id="D20-ME-G3a"/>
+                <constraint firstItem="doR-Ap-iDH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="KhZ-kf-qEg"/>
                 <constraint firstItem="qtU-Sk-pR5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="M8M-Rd-M5V"/>
                 <constraint firstItem="38P-fh-Tln" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bzg-Qk-mkM"/>
-                <constraint firstItem="uuG-WR-5Js" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="eGx-ba-nwc"/>
                 <constraint firstAttribute="trailing" secondItem="qtU-Sk-pR5" secondAttribute="trailing" constant="20" id="ehm-vZ-hCr"/>
                 <constraint firstItem="38P-fh-Tln" firstAttribute="top" secondItem="qtU-Sk-pR5" secondAttribute="top" constant="-20" id="i4K-hG-oQM"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="38P-fh-Tln" secondAttribute="trailing" constant="10" id="ipW-xC-7mf"/>

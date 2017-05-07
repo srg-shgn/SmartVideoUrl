@@ -127,6 +127,8 @@ class ViewController: UIViewController {
            // if let currentTimeFloat = Float(currentTime) {
                 
                 switch interaction.interactionType {
+                case .loop:
+                    break
                 case .pause:
                     if currentTimeFloat >= interaction.displayStart && currentTimeFloat < interaction.displayStart + 0.05 {
                         interactionIdInCourse = interaction.id
@@ -331,7 +333,11 @@ extension ViewController: OverlayViewDelegate {
     }
     
     func loadNewVideo_overlayView(videoName: String, destTime: Double?) {
+        //je vide les tables
+        //avant d'ajouter les scripts de récupérations des infos concernant
+        //la nouvelle vidéo, en base
         tableInteraction = []
+        tableChapitre = []
         self.player.view.isHidden = true
         
         //on passe loadingNewVideo à true pour que la tête de lecture se positionne et se lance quand la vidép est chargé

@@ -21,7 +21,8 @@ struct Chapitre {
 
 var tableChapitre: [Chapitre] = [
     Chapitre(name: "chapitre un", start: 0, end: 10),
-    Chapitre(name: "chapitre deux", start: 10, end: 20)
+    Chapitre(name: "chapitre deux", start: 10, end: 20),
+    Chapitre(name: "chapitre trois", start: 20, end: 30)
 ]
 
 struct InteractionBtn {
@@ -40,17 +41,19 @@ struct InteractionBtn {
 //Pour afficher un message sans bouton, il suffit de choisir le type display
 //mettre tous les interBtn à nil
 class Interaction {
-    enum InteractionType { case pause, display, none }
+    enum InteractionType { case pause, display, loop, none }
     let interactionType: InteractionType
     let id:Int
     let msg: String?
     let interBtn1: InteractionBtn?
     let interBtn2: InteractionBtn?
     let interBtn3: InteractionBtn?
-    let displayStart: Float
+    let displayStart: Float?
     let displayEnd: Float?
+    let chapterToLoop: String?
+    var loopActivated: Bool?
     
-    init(interactionType: InteractionType, id: Int, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?, displayStart: Float, displayEnd: Float?) {
+    init(interactionType: InteractionType, id: Int, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?, displayStart: Float?, displayEnd: Float?, chapterToLoop: String?, loopActivated: Bool?) {
         self.interactionType = interactionType
         self.id = id
         self.msg = msg
@@ -59,11 +62,22 @@ class Interaction {
         self.interBtn3 = interBtn3
         self.displayStart = displayStart
         self.displayEnd = displayEnd
+        self.chapterToLoop = chapterToLoop
+        self.loopActivated = loopActivated
     }
 }
 
-
 var tableInteraction: [Interaction] = [
+    Interaction(interactionType: .loop,
+                id: 6,
+                msg: "Pressez le bouton pour mettre fin à la boucle",
+                interBtn1: InteractionBtn(label: "annuler la boucle", jumpToVideoName: nil, goto: nil),
+                interBtn2: nil,
+                interBtn3: nil,
+                displayStart: nil,  
+                displayEnd: nil,
+                chapterToLoop: nil,
+                loopActivated: true),
     Interaction(interactionType: .pause,
                 id: 1,
                 msg: "Presser l'un des boutons !",
@@ -71,7 +85,9 @@ var tableInteraction: [Interaction] = [
                 interBtn2: InteractionBtn(label: "go 60", jumpToVideoName: nil, goto: 60),
                 interBtn3: nil,
                 displayStart: 5,
-                displayEnd: nil),
+                displayEnd: nil,
+                chapterToLoop: nil,
+                loopActivated: nil),
     Interaction(interactionType: .pause,
                 id: 2,
                 msg: nil,
@@ -79,7 +95,9 @@ var tableInteraction: [Interaction] = [
                 interBtn2: InteractionBtn(label: "go 65", jumpToVideoName: nil, goto: 65),
                 interBtn3: InteractionBtn(label: "go 250", jumpToVideoName: nil, goto: 250),
                 displayStart: 20,
-                displayEnd: nil),
+                displayEnd: nil,
+                chapterToLoop: nil,
+                loopActivated: nil),
     Interaction(interactionType: .display,
                 id: 3,
                 msg: "Presser le bouton avant qu'il ne disparaisse...",
@@ -87,7 +105,9 @@ var tableInteraction: [Interaction] = [
                 interBtn2: nil,
                 interBtn3: nil,
                 displayStart: 52,
-                displayEnd: 65),
+                displayEnd: 65,
+                chapterToLoop: nil,
+                loopActivated: nil),
     Interaction(interactionType: .display,
                 id: 4,
                 msg: nil,
@@ -95,7 +115,9 @@ var tableInteraction: [Interaction] = [
                 interBtn2: InteractionBtn(label: "go 150", jumpToVideoName: nil, goto: 150),
                 interBtn3: InteractionBtn(label: "go 300", jumpToVideoName: nil, goto: 300),
                 displayStart: 70,
-                displayEnd: 85),
+                displayEnd: 85,
+                chapterToLoop: nil,
+                loopActivated: nil),
     Interaction(interactionType: .display,
                 id: 5,
                 msg: "Ceci est un test de d'affichage de texte sans bouton",
@@ -103,6 +125,7 @@ var tableInteraction: [Interaction] = [
                 interBtn2: nil,
                 interBtn3: nil,
                 displayStart: 155,
-                displayEnd: 165)
-    
+                displayEnd: 165,
+                chapterToLoop: nil,
+                loopActivated: nil)
 ]

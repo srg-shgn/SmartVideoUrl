@@ -115,10 +115,12 @@ class ViewController: UIViewController {
         
         //Affichage du chapitre si existe
         self.player.overlayView.chapterLabel.text = ""
+        var currentChapter: Chapitre? = nil
         if(tableChapitre.count > 0) {
             for chapitre in tableChapitre {
                 if currentTimeFloat >= chapitre.start && currentTimeFloat < chapitre.end {
                     self.player.overlayView.chapterLabel.text = chapitre.name
+                    currentChapter = chapitre
                 }
             }
         }
@@ -128,45 +130,48 @@ class ViewController: UIViewController {
                 
                 switch interaction.interactionType {
                 case .loop:
-                    break
-                case .pause:
-                    if currentTimeFloat >= interaction.displayStart && currentTimeFloat < interaction.displayStart + 0.05 {
-                        interactionIdInCourse = interaction.id
-                        interactionTypeInCourse = .pause
-                        self.player.pause()
-                        self.player.overlayView.playPauseBtnLbl.setTitle("Play", for: .normal)
-                        
-                        if let pauseMsg = interaction.msg {
-                            self.player.overlayView.titleLabel.text = pauseMsg
-                            self.player.overlayView.titleLabel.isHidden = false
-                        }
-                        if let interBtn1 = interaction.interBtn1 {
-                            self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
-                            self.player.overlayView.jumpToVideoName1 = interBtn1.jumpToVideoName
-                            self.player.overlayView.destBtn1 = interBtn1.goto
-                            self.player.overlayView.btnView1.isHidden = false
-                        }
-                        if let interBtn2 = interaction.interBtn2 {
-                            self.player.overlayView.btn2.setTitle(interBtn2.label, for: .normal)
-                            self.player.overlayView.jumpToVideoName2 = interBtn2.jumpToVideoName
-                            self.player.overlayView.destBtn2 = interBtn2.goto
-                            self.player.overlayView.btnView2.isHidden = false
-                        }
-                        if let interBtn3 = interaction.interBtn3 {
-                            self.player.overlayView.btn3.setTitle(interBtn3.label, for: .normal)
-                            self.player.overlayView.jumpToVideoName3 = interBtn3.jumpToVideoName
-                            self.player.overlayView.destBtn3 = interBtn3.goto
-                            self.player.overlayView.btnView3.isHidden = false
+                    if interaction.loopActivated == true {
+                        if let chapterToLoop = interaction.chapterToLoop {
+                            if let currentChapter = currentChapter {
+                                if currentChapter.name == chapterToLoop {
+                                    
+                                    let startBtnLoopDisplay = currentChapter.end - 5
+                                    if currentTimeFloat > startBtnLoopDisplay {
+                                        //display button 1
+                                        if let loopMsg = interaction.msg {
+                                            self.player.overlayView.titleLabel.text = loopMsg
+                                            self.player.overlayView.titleLabel.isHidden = false
+                                        }
+                                        if let interBtn1 = interaction.interBtn1 {
+                                            self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
+                                            self.player.overlayView.jumpToVideoName1 = nil
+                                            print("*** \(currentChapter.end) ***")
+                                            self.player.overlayView.destBtn1 = Double(currentChapter.end + 1)
+                                            self.player.overlayView.btnView1.isHidden = false
+                                        }
+                                    }
+                                    
+                                    //retourne au début du chapitre
+                                    if currentTimeFloat >= currentChapter.end - 0.1 {
+                                        self.player.overlayView.manageDestination(dest: Double(currentChapter.start), jumpToVideoName: nil)
+                                    }
+                                    
+                                    
+                                }
+                            }
                         }
                     }
                     break
-                case .display:
-                    if let displayEnd = interaction.displayEnd {
-                        if currentTimeFloat >= interaction.displayStart && currentTimeFloat <= displayEnd {
+                case .pause:
+                    if let interactionDisplayStart = interaction.displayStart {
+                        if currentTimeFloat >= interactionDisplayStart && currentTimeFloat < interactionDisplayStart + 0.05 {
                             interactionIdInCourse = interaction.id
-                            interactionTypeInCourse = .display
-                            if let displayMsg = interaction.msg {
-                                self.player.overlayView.titleLabel.text = displayMsg
+                            interactionTypeInCourse = .pause
+                            self.player.pause()
+                            self.player.overlayView.playPauseBtnLbl.setTitle("Play", for: .normal)
+                            
+                            if let pauseMsg = interaction.msg {
+                                self.player.overlayView.titleLabel.text = pauseMsg
                                 self.player.overlayView.titleLabel.isHidden = false
                             }
                             if let interBtn1 = interaction.interBtn1 {
@@ -187,9 +192,41 @@ class ViewController: UIViewController {
                                 self.player.overlayView.destBtn3 = interBtn3.goto
                                 self.player.overlayView.btnView3.isHidden = false
                             }
-                        } else {
-                            if interactionIdInCourse == interaction.id {
-                                hideInteraction()
+                        }
+                    }
+                    break
+                case .display:
+                    if let interactionDisplayStart = interaction.displayStart {
+                        if let displayEnd = interaction.displayEnd {
+                            if currentTimeFloat >= interactionDisplayStart && currentTimeFloat <= displayEnd {
+                                interactionIdInCourse = interaction.id
+                                interactionTypeInCourse = .display
+                                if let displayMsg = interaction.msg {
+                                    self.player.overlayView.titleLabel.text = displayMsg
+                                    self.player.overlayView.titleLabel.isHidden = false
+                                }
+                                if let interBtn1 = interaction.interBtn1 {
+                                    self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName1 = interBtn1.jumpToVideoName
+                                    self.player.overlayView.destBtn1 = interBtn1.goto
+                                    self.player.overlayView.btnView1.isHidden = false
+                                }
+                                if let interBtn2 = interaction.interBtn2 {
+                                    self.player.overlayView.btn2.setTitle(interBtn2.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName2 = interBtn2.jumpToVideoName
+                                    self.player.overlayView.destBtn2 = interBtn2.goto
+                                    self.player.overlayView.btnView2.isHidden = false
+                                }
+                                if let interBtn3 = interaction.interBtn3 {
+                                    self.player.overlayView.btn3.setTitle(interBtn3.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName3 = interBtn3.jumpToVideoName
+                                    self.player.overlayView.destBtn3 = interBtn3.goto
+                                    self.player.overlayView.btnView3.isHidden = false
+                                }
+                            } else {
+                                if interactionIdInCourse == interaction.id {
+                                    hideInteraction()
+                                }
                             }
                         }
                     }

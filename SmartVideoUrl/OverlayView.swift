@@ -150,7 +150,7 @@ class OverlayView: UIView {
         addConstraint(NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
     }
     
-    private func manageDestination(dest: Double?, jumpToVideoName: String?) {
+    func manageDestination(dest: Double?, jumpToVideoName: String?) {
         
         if jumpToVideoName == nil {
             //on reste sur la même video

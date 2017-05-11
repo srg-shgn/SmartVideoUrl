@@ -369,6 +369,20 @@ extension ViewController: OverlayViewDelegate {
         self.player.overlayView.playPauseBtnLbl.setTitle("Pause", for: .normal)
     }
     
+    func goBckFwd_overlayView(type: OperatorType, value: Double) {
+        let destTime = Double(self.player.currentTime)
+        var newTime: CMTime
+        switch type {
+        case .goBack:
+            newTime = CMTime.init(seconds: destTime - value, preferredTimescale: CMTimeScale.init(1))
+            break
+        case .goForward:
+            newTime = CMTime.init(seconds: destTime + value, preferredTimescale: CMTimeScale.init(1))
+            break
+        }
+        self.player.seek(to: newTime)
+    }
+    
     func loadNewVideo_overlayView(videoName: String, destTime: Double?) {
         //je vide les tables
         //avant d'ajouter les scripts de récupérations des infos concernant

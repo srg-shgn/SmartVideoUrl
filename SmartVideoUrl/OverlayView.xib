@@ -61,12 +61,13 @@
                             <rect key="frame" x="0.0" y="0.0" width="109" height="90"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQ5-lf-E52">
-                                    <rect key="frame" x="20" y="20" width="70" height="50"/>
+                                    <rect key="frame" x="5" y="20" width="100" height="50"/>
                                     <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="70" id="9YJ-cM-ZAb"/>
+                                        <constraint firstAttribute="width" constant="100" id="9YJ-cM-ZAb"/>
                                         <constraint firstAttribute="height" constant="50" id="Zxl-ew-spa"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                     <state key="normal" title="Button">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -85,12 +86,13 @@
                             <rect key="frame" x="109" y="0.0" width="109" height="90"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJm-1V-uWV">
-                                    <rect key="frame" x="20" y="20" width="70" height="50"/>
+                                    <rect key="frame" x="5" y="20" width="100" height="50"/>
                                     <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="70" id="9i9-vC-Hsy"/>
+                                        <constraint firstAttribute="width" constant="100" id="9i9-vC-Hsy"/>
                                         <constraint firstAttribute="height" constant="50" id="tXz-8E-Urn"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                     <state key="normal" title="Button">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -109,12 +111,13 @@
                             <rect key="frame" x="218" y="0.0" width="109" height="90"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bul-cG-o6f">
-                                    <rect key="frame" x="20" y="20" width="70" height="50"/>
+                                    <rect key="frame" x="5" y="20" width="100" height="50"/>
                                     <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="GeK-pG-yUg"/>
-                                        <constraint firstAttribute="width" constant="70" id="Yfs-gt-zN5"/>
+                                        <constraint firstAttribute="width" constant="100" id="Yfs-gt-zN5"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                     <state key="normal" title="Button">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -137,24 +140,98 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hS2-Qm-FpP">
                     <rect key="frame" x="0.0" y="174" width="367" height="70"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIV-Zl-L7x">
-                            <rect key="frame" x="148.5" y="10" width="70" height="50"/>
-                            <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lrT-A0-Yas">
+                            <rect key="frame" x="83.5" y="0.0" width="200" height="70"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVR-r8-Do8">
+                                    <rect key="frame" x="0.0" y="0.0" width="66.5" height="70"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNk-gM-fnX">
+                                            <rect key="frame" x="13.5" y="20" width="40" height="30"/>
+                                            <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="lMd-A9-b5K"/>
+                                            </constraints>
+                                            <state key="normal" title="-15s">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="pressGoBack15:" destination="-1" eventType="touchUpInside" id="Tka-J4-zEZ"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="eNk-gM-fnX" firstAttribute="centerY" secondItem="JVR-r8-Do8" secondAttribute="centerY" id="ap7-TE-JTS"/>
+                                        <constraint firstItem="eNk-gM-fnX" firstAttribute="centerX" secondItem="JVR-r8-Do8" secondAttribute="centerX" id="sdM-hF-yTm"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyA-se-yd9">
+                                    <rect key="frame" x="66.5" y="0.0" width="67" height="70"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIV-Zl-L7x">
+                                            <rect key="frame" x="3.5" y="20" width="60" height="30"/>
+                                            <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="BpH-yy-bG7"/>
+                                            </constraints>
+                                            <state key="normal" title="Pause">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="pressPausePlay:" destination="-1" eventType="touchUpInside" id="CoK-TG-KNv"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="AIV-Zl-L7x" firstAttribute="centerX" secondItem="fyA-se-yd9" secondAttribute="centerX" id="eSA-7a-fsT"/>
+                                        <constraint firstItem="AIV-Zl-L7x" firstAttribute="centerY" secondItem="fyA-se-yd9" secondAttribute="centerY" id="fmg-vW-cCZ"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9g-pR-XHB">
+                                    <rect key="frame" x="133.5" y="0.0" width="66.5" height="70"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEF-vz-dwg">
+                                            <rect key="frame" x="13" y="20" width="40" height="30"/>
+                                            <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="TzP-bl-oZP"/>
+                                            </constraints>
+                                            <state key="normal" title="+15s">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="pressGoFwd15:" destination="-1" eventType="touchUpInside" id="K4Q-sY-z63"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="SEF-vz-dwg" firstAttribute="centerX" secondItem="N9g-pR-XHB" secondAttribute="centerX" id="UgB-sF-Tij"/>
+                                        <constraint firstItem="SEF-vz-dwg" firstAttribute="centerY" secondItem="N9g-pR-XHB" secondAttribute="centerY" id="zfV-6t-sOH"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="RHj-Si-CFy"/>
-                                <constraint firstAttribute="width" constant="70" id="nET-Y4-3w0"/>
+                                <constraint firstAttribute="bottom" secondItem="fyA-se-yd9" secondAttribute="bottom" id="73I-dC-kLH"/>
+                                <constraint firstItem="fyA-se-yd9" firstAttribute="top" secondItem="lrT-A0-Yas" secondAttribute="top" id="GiF-G6-fDm"/>
+                                <constraint firstItem="JVR-r8-Do8" firstAttribute="top" secondItem="lrT-A0-Yas" secondAttribute="top" id="Gj7-dW-lrT"/>
+                                <constraint firstItem="N9g-pR-XHB" firstAttribute="top" secondItem="lrT-A0-Yas" secondAttribute="top" id="Uz2-kT-2t0"/>
+                                <constraint firstAttribute="bottom" secondItem="N9g-pR-XHB" secondAttribute="bottom" id="Vos-JL-4Rx"/>
+                                <constraint firstItem="JVR-r8-Do8" firstAttribute="leading" secondItem="lrT-A0-Yas" secondAttribute="leading" id="XsP-08-CjI"/>
+                                <constraint firstItem="N9g-pR-XHB" firstAttribute="leading" secondItem="fyA-se-yd9" secondAttribute="trailing" id="bO4-PN-iLW"/>
+                                <constraint firstAttribute="trailing" secondItem="N9g-pR-XHB" secondAttribute="trailing" id="hGr-hP-00g"/>
+                                <constraint firstAttribute="width" constant="200" id="kcr-7g-UUu"/>
+                                <constraint firstItem="fyA-se-yd9" firstAttribute="leading" secondItem="JVR-r8-Do8" secondAttribute="trailing" id="uwK-Lt-Sht"/>
+                                <constraint firstAttribute="bottom" secondItem="JVR-r8-Do8" secondAttribute="bottom" id="ysX-Jk-8ng"/>
                             </constraints>
-                            <state key="normal" title="Pause">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="pressPausePlay:" destination="-1" eventType="touchUpInside" id="CoK-TG-KNv"/>
-                            </connections>
-                        </button>
+                        </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="AIV-Zl-L7x" firstAttribute="centerX" secondItem="hS2-Qm-FpP" secondAttribute="centerX" id="PgJ-YD-7Ms"/>
-                        <constraint firstItem="AIV-Zl-L7x" firstAttribute="centerY" secondItem="hS2-Qm-FpP" secondAttribute="centerY" id="c6v-Mi-nSd"/>
+                        <constraint firstAttribute="bottom" secondItem="lrT-A0-Yas" secondAttribute="bottom" id="ZIc-GD-884"/>
+                        <constraint firstItem="lrT-A0-Yas" firstAttribute="centerX" secondItem="hS2-Qm-FpP" secondAttribute="centerX" id="aEd-SD-Mmc"/>
+                        <constraint firstItem="lrT-A0-Yas" firstAttribute="top" secondItem="hS2-Qm-FpP" secondAttribute="top" id="kDa-VT-PmB"/>
                         <constraint firstAttribute="height" constant="70" id="v66-6Q-Bce"/>
                     </constraints>
                 </view>

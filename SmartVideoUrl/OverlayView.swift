@@ -45,6 +45,14 @@ class OverlayView: UIView {
         }
     }
     
+    @IBAction func pressGoBack15(_ sender: Any) {
+        delegate?.goBckFwd_overlayView(type: .goBack, value: 15)
+    }
+    
+    @IBAction func pressGoFwd15(_ sender: Any) {
+        delegate?.goBckFwd_overlayView(type: .goForward, value: 15)
+    }
+    
     @IBAction func pressBtn1(_ sender: Any) {
         let destBtn = destBtn1
         manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName1)
@@ -171,6 +179,7 @@ class OverlayView: UIView {
 protocol OverlayViewDelegate {
     func playPause_overlayView() -> Bool
     func videoSeekTo_overlayView(to: CMTime)
+    func goBckFwd_overlayView(type: OperatorType, value: Double)
     func loadNewVideo_overlayView(videoName: String, destTime: Double?)
     func getDeviceViewWidth_overlayView() -> CGFloat
     func getDeviceViewHeight_overlayView() -> CGFloat

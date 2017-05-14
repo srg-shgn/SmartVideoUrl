@@ -14,6 +14,9 @@ class OverlayView: UIView {
     
     var delegate: OverlayViewDelegate?
     
+    @IBOutlet var videoContainerView: UIView!
+    @IBOutlet weak var videoControlPanel: UIView!
+    
     /// Label to show the empty text
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var playPauseBtnLbl: UIButton!
@@ -117,9 +120,8 @@ class OverlayView: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
 
         titleLabel.text = "Saved successfully"
-
     }
-
+    
     /**
      Displays the overlayView on the passed in view
 

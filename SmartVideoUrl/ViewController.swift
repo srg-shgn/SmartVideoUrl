@@ -33,6 +33,8 @@ let videoUrl2 = URL(string: "http://www.html5videoplayer.net/videos/toystory.mp4
 class ViewController: UIViewController {
     
     var timerTick: VideoTimerModel?
+    var timerPanelControl: VideoTimerModel?
+    
     
     //if -1 no interaction is displayed
     var interactionIdInCourse:Int = -1
@@ -92,12 +94,26 @@ class ViewController: UIViewController {
         self.player.overlayView.displayView(view)
         self.player.overlayView.delegate = self
         hideInteraction()
+        
+        //Détection d'un clic sur la view videoContainerView de OverlayView.xib
+        let tapVideoContainer = UITapGestureRecognizer(target: self, action: #selector(self.displayControlPanel))
+        self.player.overlayView.videoContainerView.isUserInteractionEnabled = true
+        self.player.overlayView.videoContainerView.addGestureRecognizer(tapVideoContainer)
+        self.player.overlayView.videoControlPanel.isHidden = true
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.player.playFromBeginning()
+    }
+    
+    //gestion du click sur la view videoContainerView de OverlayView.xib
+    func displayControlPanel(sender:UITapGestureRecognizer) {
+        print("AZERTY !!!!")
+        self.player.overlayView.videoControlPanel.isHidden = false
+        timerPanelControl?.timerControlPanelRestart()
     }
     
     func displayCurrentTime() {
@@ -145,7 +161,7 @@ class ViewController: UIViewController {
                                         if let interBtn1 = interaction.interBtn1 {
                                             self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
                                             self.player.overlayView.jumpToVideoName1 = nil
-                                            print("*** \(currentChapter.end) ***")
+                                            //print("*** \(currentChapter.end) ***")
                                             self.player.overlayView.destBtn1 = Double(currentChapter.end + 1)
                                             self.player.overlayView.btnView1.isHidden = false
                                         }
@@ -292,6 +308,10 @@ extension ViewController: PlayerDelegate {
         timerTick = VideoTimerModel()
         timerTick?.delegate = self
         timerTick?.timerStart()
+        
+        //GESTION DU VIDEO CONTROL PANEL
+        timerPanelControl = VideoTimerModel()
+        timerPanelControl?.controlPanelDelegate = self
     }
     
     func playerPlaybackStateDidChange(_ player: Player) {
@@ -335,7 +355,7 @@ extension ViewController: OverlayViewDelegate {
                     
                 //on ajoute 1s pour sortir du range de la pause
                 let newTime = CMTime.init(seconds: destTime, preferredTimescale: CMTimeScale.init(100))
-                print("***** \(newTime) *****")
+                //print("***** \(newTime) *****")
                 videoSeekTo_overlayView(to: newTime)
                 
             } else {
@@ -415,6 +435,13 @@ extension ViewController: OverlayViewDelegate {
 extension ViewController: TimerVideoDelegate {
     func timerVideoTick() {
         displayCurrentTime()
+    }
+}
+
+extension ViewController: TimerVideoControlPanelDelegate {
+    func timerVideoControlPanelEnd() {
+        print("CLOSE PANEL !!!!!!")
+        self.player.overlayView.videoControlPanel.isHidden = true
     }
 }
 

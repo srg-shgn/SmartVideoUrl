@@ -21,6 +21,8 @@
                 <outlet property="currentTimeLabel" destination="uuG-WR-5Js" id="ujz-rb-6sg"/>
                 <outlet property="playPauseBtnLbl" destination="AIV-Zl-L7x" id="y7k-Rl-Gur"/>
                 <outlet property="titleLabel" destination="38P-fh-Tln" id="0X0-fD-x6V"/>
+                <outlet property="videoContainerView" destination="iN0-l3-epB" id="zqr-Ea-i7b"/>
+                <outlet property="videoControlPanel" destination="hS2-Qm-FpP" id="pf0-bT-UMr"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -137,7 +139,7 @@
                         <constraint firstAttribute="height" constant="90" id="W0Y-c8-94Q"/>
                     </constraints>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hS2-Qm-FpP">
+                <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hS2-Qm-FpP">
                     <rect key="frame" x="0.0" y="174" width="367" height="70"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lrT-A0-Yas">
@@ -160,7 +162,6 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="eNk-gM-fnX" firstAttribute="centerY" secondItem="JVR-r8-Do8" secondAttribute="centerY" id="ap7-TE-JTS"/>
                                         <constraint firstItem="eNk-gM-fnX" firstAttribute="centerX" secondItem="JVR-r8-Do8" secondAttribute="centerX" id="sdM-hF-yTm"/>
@@ -183,7 +184,6 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="AIV-Zl-L7x" firstAttribute="centerX" secondItem="fyA-se-yd9" secondAttribute="centerX" id="eSA-7a-fsT"/>
                                         <constraint firstItem="AIV-Zl-L7x" firstAttribute="centerY" secondItem="fyA-se-yd9" secondAttribute="centerY" id="fmg-vW-cCZ"/>
@@ -206,7 +206,6 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="SEF-vz-dwg" firstAttribute="centerX" secondItem="N9g-pR-XHB" secondAttribute="centerX" id="UgB-sF-Tij"/>
                                         <constraint firstItem="SEF-vz-dwg" firstAttribute="centerY" secondItem="N9g-pR-XHB" secondAttribute="centerY" id="zfV-6t-sOH"/>
@@ -228,6 +227,7 @@
                             </constraints>
                         </stackView>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="lrT-A0-Yas" secondAttribute="bottom" id="ZIc-GD-884"/>
                         <constraint firstItem="lrT-A0-Yas" firstAttribute="centerX" secondItem="hS2-Qm-FpP" secondAttribute="centerX" id="aEd-SD-Mmc"/>

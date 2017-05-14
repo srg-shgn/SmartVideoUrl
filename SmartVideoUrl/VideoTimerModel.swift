@@ -13,6 +13,9 @@ class VideoTimerModel {
     var myTimer: Timer?
     var delegate: TimerVideoDelegate?
     
+    var controlPanelTimer: Timer?
+    var controlPanelDelegate: TimerVideoControlPanelDelegate?
+    
     func timerStart() {
         //print("START TIMER TICK !")
         myTimer = Timer.scheduledTimer(withTimeInterval: 0, repeats: true, block: { (Timer) in
@@ -23,8 +26,20 @@ class VideoTimerModel {
     func timerStop() {
         self.myTimer?.invalidate()
     }
+    
+    func timerControlPanelRestart() {
+        //print("START TIMER CONTROL PANEL !")
+        self.myTimer?.invalidate()
+        controlPanelTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (Timer) in
+            self.controlPanelDelegate?.timerVideoControlPanelEnd()
+        })
+    }
 }
 
 protocol TimerVideoDelegate {
     func timerVideoTick()
+}
+
+protocol TimerVideoControlPanelDelegate {
+    func timerVideoControlPanelEnd()
 }

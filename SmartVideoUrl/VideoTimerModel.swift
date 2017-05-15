@@ -28,12 +28,13 @@ class VideoTimerModel {
     }
     
     func timerControlPanelRestart() {
-        //print("START TIMER CONTROL PANEL !")
-        self.myTimer?.invalidate()
+        print("RESTART TIMER CONTROL PANEL !")
+        self.controlPanelTimer?.invalidate()
         controlPanelTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (Timer) in
             self.controlPanelDelegate?.timerVideoControlPanelEnd()
         })
     }
+    
 }
 
 protocol TimerVideoDelegate {

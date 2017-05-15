@@ -343,6 +343,7 @@ extension ViewController: PlayerPlaybackDelegate {
 
 extension ViewController: OverlayViewDelegate {
     func playPause_overlayView() -> Bool {
+        timerPanelControl?.timerControlPanelRestart()
         var playerIsPlaying = false
         
         switch (self.player.playbackState.rawValue) {
@@ -390,6 +391,7 @@ extension ViewController: OverlayViewDelegate {
     }
     
     func goBckFwd_overlayView(type: OperatorType, value: Double) {
+        timerPanelControl?.timerControlPanelRestart()
         let destTime = Double(self.player.currentTime)
         var newTime: CMTime
         switch type {

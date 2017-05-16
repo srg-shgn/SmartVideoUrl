@@ -73,6 +73,80 @@ class Interaction {
     }
 }
 
+class Interaction2 {
+    let id: String
+    let msg: String?
+    let interBtn1: InteractionBtn?
+    
+    init(id: String, msg: String?, interBtn1: InteractionBtn?) {
+        self.id = id
+        self.msg = msg
+        self.interBtn1 = interBtn1
+    }
+}
+
+class LoopInter: Interaction2 {
+    var chapterToLoop: String?
+    var loopActivated: Bool = false
+    
+    init(id: String, msg: String?, interBtn1:InteractionBtn?, chapterToLoop: String, loopActivated: Bool) {
+        super.init(id: id, msg: msg, interBtn1: interBtn1)
+        self.chapterToLoop = chapterToLoop
+        self.loopActivated = loopActivated
+    }
+}
+
+class PauseInter: Interaction2 {
+    var interBtn2: InteractionBtn?
+    var interBtn3: InteractionBtn?
+    var displayStart: Float?
+    
+    init(id: String, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?, displayStart: Float) {
+        super.init(id: id, msg: msg, interBtn1: interBtn1)
+        self.interBtn2 = interBtn2
+        self.interBtn3 = interBtn3
+        self.displayStart = displayStart
+    }
+}
+
+class DisplayInter: PauseInter {
+    var displayEnd: Float?
+    
+    init(id: String, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?, displayStart: Float, displayEnd: Float) {
+        super.init(id: id, msg: msg, interBtn1: interBtn1, interBtn2: interBtn2, interBtn3: interBtn3, displayStart: displayStart)
+        self.displayEnd = displayEnd
+    }
+}
+
+
+class SumaryInter: PauseInter {
+    var interBtn4: InteractionBtn?
+    var interBtn5: InteractionBtn?
+    var interBtn6: InteractionBtn?
+    var interBtn7: InteractionBtn?
+    var interBtn8: InteractionBtn?
+    var interBtn9: InteractionBtn?
+    var interBtn10: InteractionBtn?
+    var interBtn11: InteractionBtn?
+    var interBtn12: InteractionBtn?
+    
+    init(id: String, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?,
+         interBtn4: InteractionBtn, interBtn5: InteractionBtn, interBtn6: InteractionBtn, interBtn7: InteractionBtn,
+         interBtn8: InteractionBtn, interBtn9: InteractionBtn, interBtn10: InteractionBtn, interBtn11: InteractionBtn,
+         interBtn12: InteractionBtn, displayStart: Float) {
+        super.init(id: id, msg: msg, interBtn1: interBtn1, interBtn2: interBtn2, interBtn3: interBtn3, displayStart: displayStart)
+        self.interBtn4 = interBtn4
+        self.interBtn5 = interBtn5
+        self.interBtn6 = interBtn6
+        self.interBtn7 = interBtn7
+        self.interBtn8 = interBtn8
+        self.interBtn9 = interBtn9
+        self.interBtn10 = interBtn10
+        self.interBtn11 = interBtn11
+        self.interBtn12 = interBtn12
+    }
+}
+
 var tableInteraction: [Interaction] = [
     Interaction(interactionType: .loop,
                 id: 6,

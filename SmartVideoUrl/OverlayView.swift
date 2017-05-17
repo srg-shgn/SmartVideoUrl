@@ -34,10 +34,28 @@ class OverlayView: UIView {
     var destBtn1: Double?
     var destBtn2: Double?
     var destBtn3: Double?
+    var destBtn4: Double?
+    var destBtn5: Double?
+    var destBtn6: Double?
+    var destBtn7: Double?
+    var destBtn8: Double?
+    var destBtn9: Double?
+    var destBtn10: Double?
+    var destBtn11: Double?
+    var destBtn12: Double?
     
     var jumpToVideoName1: String?
     var jumpToVideoName2: String?
     var jumpToVideoName3: String?
+    var jumpToVideoName4: String?
+    var jumpToVideoName5: String?
+    var jumpToVideoName6: String?
+    var jumpToVideoName7: String?
+    var jumpToVideoName8: String?
+    var jumpToVideoName9: String?
+    var jumpToVideoName10: String?
+    var jumpToVideoName11: String?
+    var jumpToVideoName12: String?
     
     @IBAction func pressPausePlay(_ sender: Any) {
         let playerIsPlaying = delegate?.playPause_overlayView()

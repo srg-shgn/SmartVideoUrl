@@ -27,9 +27,30 @@ class OverlayView: UIView {
     @IBOutlet weak var btnView2: UIView!
     @IBOutlet weak var btnView3: UIView!
     
+    @IBOutlet weak var svBtn_4_5_6: UIStackView!
+    @IBOutlet weak var btnView4: UIView!
+    @IBOutlet weak var btnView5: UIView!
+    @IBOutlet weak var btnView6: UIView!
+    
+    @IBOutlet weak var svBtn_7_8_9: UIStackView!
+    @IBOutlet weak var btnView7: UIView!
+    @IBOutlet weak var btnView8: UIView!
+    @IBOutlet weak var btnView9: UIView!
+    
+    @IBOutlet weak var svBtn_10_11_12: UIStackView!
+    @IBOutlet weak var btnView10: UIView!
+    @IBOutlet weak var btnView11: UIView!
+    @IBOutlet weak var btnView12: UIView!
+    
+    
     @IBOutlet weak var btn1: UIButton!
     @IBOutlet weak var btn2: UIButton!
     @IBOutlet weak var btn3: UIButton!
+    
+    
+    
+    
+    
     
     var destBtn1: Double?
     var destBtn2: Double?

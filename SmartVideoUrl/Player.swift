@@ -297,7 +297,7 @@ open class Player: UIViewController {
         self._playerView.player = nil
         
         self.removePlayerObservers()
-
+    
         self._avplayer.pause()
         self.setupPlayerItem(nil)
     }
@@ -333,6 +333,7 @@ open class Player: UIViewController {
 
     /// Begins playback of the media from the beginning.
     open func playFromBeginning() {
+        //print("*** play from begining ***")
         self.playbackDelegate?.playerPlaybackWillStartFromBeginning(self)
         self._avplayer.seek(to: kCMTimeZero)
         self.playFromCurrentTime()
@@ -340,7 +341,7 @@ open class Player: UIViewController {
 
     /// Begins playback of the media from the current time.
     open func playFromCurrentTime() {
-        //print("*** play ***")
+        //print("*** play From Current Time ***")
         self.playbackState = .playing
         self._avplayer.play()
     }
@@ -351,7 +352,6 @@ open class Player: UIViewController {
         if self.playbackState != .playing {
             return
         }
-
         self._avplayer.pause()
         self.playbackState = .paused
     }
@@ -361,7 +361,6 @@ open class Player: UIViewController {
         if self.playbackState == .stopped {
             return
         }
-
         self._avplayer.pause()
         self.playbackState = .stopped
         self.playbackDelegate?.playerPlaybackDidEnd(self)
@@ -548,7 +547,8 @@ extension Player {
     
     internal func handleApplicationWillResignActive(_ aNotification: Notification) {
         if self.playbackState == .playing {
-            self.pause()
+            print("CALL PAUSE 11")
+            //self.pause()
         }
     }
 

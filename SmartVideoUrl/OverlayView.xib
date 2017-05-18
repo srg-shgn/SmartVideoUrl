@@ -15,11 +15,23 @@
                 <outlet property="btn2" destination="QJm-1V-uWV" id="OKR-Uo-tyv"/>
                 <outlet property="btn3" destination="bul-cG-o6f" id="G5R-Rx-jKW"/>
                 <outlet property="btnView1" destination="yvo-I1-Cne" id="HcZ-Di-T5u"/>
+                <outlet property="btnView10" destination="Qw8-sB-gbR" id="RGw-r7-H1F"/>
+                <outlet property="btnView11" destination="r6X-KM-7qk" id="DJg-RP-mog"/>
+                <outlet property="btnView12" destination="3AT-s3-aqa" id="Dps-eG-RRr"/>
                 <outlet property="btnView2" destination="Gau-aP-Ca3" id="lEk-Ji-Cpd"/>
                 <outlet property="btnView3" destination="h7M-p5-TY0" id="rZS-N3-rHP"/>
+                <outlet property="btnView4" destination="C3Q-zz-Cfr" id="9Lc-94-3CH"/>
+                <outlet property="btnView5" destination="pv3-MK-MOe" id="Yia-Q1-ZLd"/>
+                <outlet property="btnView6" destination="fj6-Nd-WxD" id="c91-Wu-VX4"/>
+                <outlet property="btnView7" destination="mJf-Hd-Fhs" id="IA6-kd-l1R"/>
+                <outlet property="btnView8" destination="Hbo-SG-ohB" id="E9b-OK-KXF"/>
+                <outlet property="btnView9" destination="THz-Tt-vgB" id="uTd-fU-vCY"/>
                 <outlet property="chapterLabel" destination="Okb-zU-jr3" id="dge-mJ-PNn"/>
                 <outlet property="currentTimeLabel" destination="uuG-WR-5Js" id="ujz-rb-6sg"/>
                 <outlet property="playPauseBtnLbl" destination="AIV-Zl-L7x" id="y7k-Rl-Gur"/>
+                <outlet property="svBtn_10_11_12" destination="Ikv-qy-g44" id="IiY-1c-B5w"/>
+                <outlet property="svBtn_4_5_6" destination="gde-lm-va2" id="5am-ol-eJv"/>
+                <outlet property="svBtn_7_8_9" destination="B2b-fO-QOF" id="uYq-YQ-32B"/>
                 <outlet property="titleLabel" destination="38P-fh-Tln" id="0X0-fD-x6V"/>
                 <outlet property="videoContainerView" destination="iN0-l3-epB" id="zqr-Ea-i7b"/>
                 <outlet property="videoControlPanel" destination="hS2-Qm-FpP" id="pf0-bT-UMr"/>
@@ -472,8 +484,8 @@
                 <constraint firstItem="5ZZ-5b-ITg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="75" id="ENK-dc-sj8"/>
                 <constraint firstItem="38P-fh-Tln" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="F63-HS-ivE"/>
                 <constraint firstItem="doR-Ap-iDH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="KhZ-kf-qEg"/>
-                <constraint firstItem="38P-fh-Tln" firstAttribute="top" secondItem="doR-Ap-iDH" secondAttribute="bottom" id="Nxi-8l-H3C"/>
                 <constraint firstAttribute="bottom" secondItem="5ZZ-5b-ITg" secondAttribute="bottom" constant="60" id="PGN-2D-pjD"/>
+                <constraint firstItem="5ZZ-5b-ITg" firstAttribute="top" secondItem="38P-fh-Tln" secondAttribute="bottom" constant="5" id="clz-eC-rzc"/>
                 <constraint firstAttribute="trailing" secondItem="38P-fh-Tln" secondAttribute="trailing" constant="10" id="kSl-C9-BHz"/>
                 <constraint firstAttribute="bottom" secondItem="hS2-Qm-FpP" secondAttribute="bottom" id="qcP-S7-rrR"/>
                 <constraint firstAttribute="trailing" secondItem="5ZZ-5b-ITg" secondAttribute="trailing" constant="20" id="zWS-h4-biQ"/>

@@ -11,10 +11,12 @@ import Foundation
 enum OperatorType { case goBack, goForward }
 
 struct Chapitre {
+    let id: String
     let name: String
     let start: Float
     let end: Float
-    init(name: String, start: Float, end: Float) {
+    init(id: String, name: String, start: Float, end: Float) {
+        self.id = id
         self.name = name
         self.start = start
         self.end = end
@@ -22,17 +24,34 @@ struct Chapitre {
 }
 
 var tableChapitre: [Chapitre] = [
-    Chapitre(name: "chapitre un", start: 0, end: 10),
-    Chapitre(name: "chapitre deux", start: 10, end: 20),
-    Chapitre(name: "chapitre trois", start: 20, end: 30)
+    Chapitre(id: "som", name: "sommaire", start: 0, end: 2),
+    Chapitre(id: "chap1", name: "chapitre un", start: 2, end: 10),
+    Chapitre(id: "chap2", name: "chapitre deux", start: 10, end: 20),
+    Chapitre(id: "chap3", name: "chapitre trois", start: 20, end: 30),
+    Chapitre(id: "chap4", name: "chapitre quatre", start: 30, end: 40),
+    Chapitre(id: "chap5", name: "chapitre cinq", start: 40, end: 50),
+    Chapitre(id: "chap6", name: "chapitre six", start: 50, end: 60),
+    Chapitre(id: "chap7", name: "chapitre sept", start: 60, end: 70),
+    Chapitre(id: "chap8", name: "chapitre huit", start: 70, end: 80),
+    Chapitre(id: "chap9", name: "chapitre neuf", start: 80, end: 90),
+    Chapitre(id: "chap10", name: "chapitre dix", start: 90, end: 100),
+    Chapitre(id: "chap11", name: "chapitre onze", start: 100, end: 110),
+    Chapitre(id: "chap12", name: "chapitre douze", start: 110, end: 120)
 ]
 
 struct InteractionBtn {
-    let label: String, jumpToVideoName: String?, goto: Double?
+    let label: String, jumpToVideoName: String?, goto: Double?, gotoChapterId: String?
     init(label: String, jumpToVideoName: String?, goto: Double?) {
         self.label = label
         self.jumpToVideoName = jumpToVideoName //si nil, on reste sur la vidéo courante
         self.goto = goto //si nil, on lance à 0
+        self.gotoChapterId = nil
+    }
+    init(label: String, jumpToVideoName: String?, gotoChapterId: String?) {
+        self.label = label
+        self.jumpToVideoName = jumpToVideoName
+        self.goto = nil
+        self.gotoChapterId = gotoChapterId
     }
 }
 
@@ -142,6 +161,21 @@ class SumaryInter: PauseInter {
 }
 
 var tableInteraction: [Interaction] = [
+//    SumaryInter(id: 7,
+//                msg: "Sommaire",
+//                interBtn1: <#T##InteractionBtn?#>,
+//                interBtn2: <#T##InteractionBtn?#>,
+//                interBtn3: <#T##InteractionBtn?#>,
+//                interBtn4: <#T##InteractionBtn#>,
+//                interBtn5: <#T##InteractionBtn#>,
+//                interBtn6: <#T##InteractionBtn#>,
+//                interBtn7: <#T##InteractionBtn#>,
+//                interBtn8: <#T##InteractionBtn#>,
+//                interBtn9: <#T##InteractionBtn#>,
+//                interBtn10: <#T##InteractionBtn#>,
+//                interBtn11: <#T##InteractionBtn#>,
+//                interBtn12: <#T##InteractionBtn#>,
+//                displayStart: 1),
     LoopInter(id: 6,
                 msg: "Pressez le bouton pour mettre fin à la boucle",
                 interBtn1: InteractionBtn(label: "chapitre suivant", jumpToVideoName: nil, goto: nil),

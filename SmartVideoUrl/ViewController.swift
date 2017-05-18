@@ -267,10 +267,25 @@ class ViewController: UIViewController {
     func hideInteraction() {
         interactionIdInCourse = -1
         interactionTypeInCourse = .none
+        self.player.overlayView.titleLabel.isHidden = true
         self.player.overlayView.btnView1.isHidden = true
         self.player.overlayView.btnView2.isHidden = true
         self.player.overlayView.btnView3.isHidden = true
-        self.player.overlayView.titleLabel.isHidden = true
+        
+        self.player.overlayView.btnView4.isHidden = true
+        self.player.overlayView.btnView5.isHidden = true
+        self.player.overlayView.btnView6.isHidden = true
+        self.player.overlayView.svBtn_4_5_6.isHidden = true
+        
+        self.player.overlayView.btnView7.isHidden = true
+        self.player.overlayView.btnView8.isHidden = true
+        self.player.overlayView.btnView9.isHidden = true
+        self.player.overlayView.svBtn_7_8_9.isHidden = true
+        
+        self.player.overlayView.btnView10.isHidden = true
+        self.player.overlayView.btnView11.isHidden = true
+        self.player.overlayView.btnView12.isHidden = true
+        self.player.overlayView.svBtn_10_11_12.isHidden = true
     }
     
 }

@@ -12,8 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverlayView" customModule="SmartVideoUrl" customModuleProvider="target">
             <connections>
                 <outlet property="btn1" destination="cQ5-lf-E52" id="Udp-dg-OdO"/>
+                <outlet property="btn10" destination="hTK-2G-b5c" id="Vgd-LH-ARn"/>
+                <outlet property="btn11" destination="GDl-W6-saY" id="Kk6-I5-X1S"/>
+                <outlet property="btn12" destination="s30-k7-qpr" id="iRH-8q-RvI"/>
                 <outlet property="btn2" destination="QJm-1V-uWV" id="OKR-Uo-tyv"/>
                 <outlet property="btn3" destination="bul-cG-o6f" id="G5R-Rx-jKW"/>
+                <outlet property="btn4" destination="xnU-Lb-UPz" id="cal-jn-oRR"/>
+                <outlet property="btn5" destination="8Hj-aH-fKT" id="bEA-An-C9j"/>
+                <outlet property="btn6" destination="suS-Zr-Vyx" id="sH9-gZ-z7f"/>
+                <outlet property="btn7" destination="gNi-Xi-qzQ" id="Kbr-S9-AhD"/>
+                <outlet property="btn8" destination="fVa-Qc-cHL" id="c7v-9u-Hg0"/>
+                <outlet property="btn9" destination="WIF-Rt-nxo" id="wEK-GY-eKI"/>
                 <outlet property="btnView1" destination="yvo-I1-Cne" id="HcZ-Di-T5u"/>
                 <outlet property="btnView10" destination="Qw8-sB-gbR" id="RGw-r7-H1F"/>
                 <outlet property="btnView11" destination="r6X-KM-7qk" id="DJg-RP-mog"/>

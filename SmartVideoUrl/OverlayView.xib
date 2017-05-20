@@ -180,6 +180,9 @@
                                             <state key="normal" title="4">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pressBtn4:" destination="-1" eventType="touchUpInside" id="JUJ-Yd-uCQ"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -202,6 +205,9 @@
                                             <state key="normal" title="5">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pressBtn5:" destination="-1" eventType="touchUpInside" id="gLW-21-UrO"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -224,6 +230,9 @@
                                             <state key="normal" title="6">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pressBtn6:" destination="-1" eventType="touchUpInside" id="QYb-8u-Yp2"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -251,6 +260,9 @@
                                             <state key="normal" title="7">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pressBtn7:" destination="-1" eventType="touchUpInside" id="QeU-y0-rMz"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -273,6 +285,9 @@
                                             <state key="normal" title="8">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pressBtn8:" destination="-1" eventType="touchUpInside" id="9C0-AN-aoI"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -295,6 +310,9 @@
                                             <state key="normal" title="9">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pressBtn9:" destination="-1" eventType="touchUpInside" id="aXZ-fi-76n"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -322,6 +340,9 @@
                                             <state key="normal" title="10">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pressBtn10:" destination="-1" eventType="touchUpInside" id="CpG-Ad-7yq"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -344,6 +365,9 @@
                                             <state key="normal" title="11">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pressBtn11:" destination="-1" eventType="touchUpInside" id="No2-HT-hRJ"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -366,6 +390,9 @@
                                             <state key="normal" title="12">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="pressBtn12:" destination="-1" eventType="touchUpInside" id="gta-cn-YIg"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -391,6 +418,19 @@
                 <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hS2-Qm-FpP">
                     <rect key="frame" x="0.0" y="340" width="367" height="60"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SmA-QP-Lua">
+                            <rect key="frame" x="15" y="15" width="40" height="30"/>
+                            <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="iY1-AY-fU3"/>
+                            </constraints>
+                            <state key="normal" title="&lt;|">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pressRestart:" destination="-1" eventType="touchUpInside" id="MbE-0m-Djx"/>
+                            </connections>
+                        </button>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lrT-A0-Yas">
                             <rect key="frame" x="83.5" y="0.0" width="200" height="60"/>
                             <subviews>
@@ -478,6 +518,8 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="SmA-QP-Lua" firstAttribute="leading" secondItem="hS2-Qm-FpP" secondAttribute="leading" constant="15" id="K1a-bL-zO6"/>
+                        <constraint firstItem="SmA-QP-Lua" firstAttribute="centerY" secondItem="hS2-Qm-FpP" secondAttribute="centerY" id="WMy-5H-f02"/>
                         <constraint firstAttribute="bottom" secondItem="lrT-A0-Yas" secondAttribute="bottom" id="ZIc-GD-884"/>
                         <constraint firstItem="lrT-A0-Yas" firstAttribute="centerX" secondItem="hS2-Qm-FpP" secondAttribute="centerX" id="aEd-SD-Mmc"/>
                         <constraint firstItem="lrT-A0-Yas" firstAttribute="top" secondItem="hS2-Qm-FpP" secondAttribute="top" id="kDa-VT-PmB"/>

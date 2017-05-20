@@ -100,6 +100,10 @@ class OverlayView: UIView {
         delegate?.goBckFwd_overlayView(type: .goForward, value: 15)
     }
     
+    @IBAction func pressRestart(_ sender: Any) {
+        
+    }
+    
     @IBAction func pressBtn1(_ sender: Any) {
         let destBtn = destBtn1
         manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName1)
@@ -115,6 +119,33 @@ class OverlayView: UIView {
         if let destBtn = destBtn3 {
             manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
         }
+    }
+    
+    @IBAction func pressBtn4(_ sender: Any) {
+    }
+    
+    @IBAction func pressBtn5(_ sender: Any) {
+    }
+    
+    @IBAction func pressBtn6(_ sender: Any) {
+    }
+    
+    @IBAction func pressBtn7(_ sender: Any) {
+    }
+    
+    @IBAction func pressBtn8(_ sender: Any) {
+    }
+    
+    @IBAction func pressBtn9(_ sender: Any) {
+    }
+    
+    @IBAction func pressBtn10(_ sender: Any) {
+    }
+    
+    @IBAction func pressBtn11(_ sender: Any) {
+    }
+    
+    @IBAction func pressBtn12(_ sender: Any) {
     }
     
     // Our custom view from the XIB file

@@ -29,6 +29,7 @@ import CoreMedia
 
 let videoUrl = URL(string: "http://www.schlum.com/myr/arte.mp4")!
 let videoUrl2 = URL(string: "http://www.html5videoplayer.net/videos/toystory.mp4")
+var initialVideo: String?
 
 class ViewController: UIViewController {
     
@@ -89,6 +90,9 @@ class ViewController: UIViewController {
         let tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGestureRecognizer(_:)))
         tapGestureRecognizer.numberOfTapsRequired = 1
         self.player.view.addGestureRecognizer(tapGestureRecognizer)
+        
+        //stockage de la video initial pour le relancemnet de la video
+        initialVideo = ""
         
         //GESTION DE L'OVERLAYVIEW
         self.player.overlayView.displayView(view)

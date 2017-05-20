@@ -41,17 +41,47 @@ var tableChapitre: [Chapitre] = [
 
 struct InteractionBtn {
     let label: String, jumpToVideoName: String?, goto: Double?, gotoChapterId: String?
-    init(label: String, jumpToVideoName: String?, goto: Double?) {
+    
+    init(label: String) { //cet init est utile pour la classe LoopInter
+        self.label = label
+        self.jumpToVideoName = nil //on reste sur la vidéo courante
+        self.goto = nil //si nil, on lance à 0
+        self.gotoChapterId = nil
+    }
+    
+    init(label: String, goto: Double) {
+        self.label = label
+        self.jumpToVideoName = nil //on reste sur la vidéo courante
+        self.goto = goto //si nil, on lance à 0
+        self.gotoChapterId = nil
+    }
+    
+    init(label: String, jumpToVideoName: String) {
+        self.label = label
+        self.jumpToVideoName = jumpToVideoName
+        self.goto = nil //si nil, on lance à 0
+        self.gotoChapterId = nil
+    }
+    
+    init(label: String, gotoChapterId: String) {
+        self.label = label
+        self.jumpToVideoName = nil //on reste sur la vidéo courante
+        self.goto = nil
+        self.gotoChapterId = nil
+    }
+    
+    init(label: String, jumpToVideoName: String, gotoChapterId: String) {
+        self.label = label
+        self.jumpToVideoName = jumpToVideoName //si nil, on reste sur la vidéo courante
+        self.goto = nil
+        self.gotoChapterId = gotoChapterId
+    }
+    
+    init(label: String, jumpToVideoName: String, goto: Double) {
         self.label = label
         self.jumpToVideoName = jumpToVideoName //si nil, on reste sur la vidéo courante
         self.goto = goto //si nil, on lance à 0
         self.gotoChapterId = nil
-    }
-    init(label: String, jumpToVideoName: String?, gotoChapterId: String?) {
-        self.label = label
-        self.jumpToVideoName = jumpToVideoName
-        self.goto = nil
-        self.gotoChapterId = gotoChapterId
     }
 }
 
@@ -178,33 +208,33 @@ var tableInteraction: [Interaction] = [
 //                displayStart: 1),
     LoopInter(id: 6,
                 msg: "Pressez le bouton pour mettre fin à la boucle",
-                interBtn1: InteractionBtn(label: "chapitre suivant", jumpToVideoName: nil, goto: nil),
+                interBtn1: InteractionBtn(label: "chapitre suivant"),
                 chapterToLoop: "chapitre un",
                 loopActivated: true),
     PauseInter(id: 1,
                 msg: "Presser l'un des boutons !",
-                interBtn1: InteractionBtn(label: "Disney", jumpToVideoName: "Disney", goto: 55),
-                interBtn2: InteractionBtn(label: "go 60", jumpToVideoName: nil, goto: 60),
+                interBtn1: InteractionBtn(label: "Disney", jumpToVideoName: "Disney"),
+                interBtn2: InteractionBtn(label: "go 60", goto: 60),
                 interBtn3: nil,
                 displayStart: 13),
     PauseInter(id: 2,
                 msg: nil,
-                interBtn1: InteractionBtn(label: "go 30", jumpToVideoName: nil, goto: 50),
-                interBtn2: InteractionBtn(label: "go 65", jumpToVideoName: nil, goto: 65),
-                interBtn3: InteractionBtn(label: "go 250", jumpToVideoName: nil, goto: 250),
+                interBtn1: InteractionBtn(label: "go 30", goto: 50),
+                interBtn2: InteractionBtn(label: "go 65", goto: 65),
+                interBtn3: InteractionBtn(label: "go 250", goto: 250),
                 displayStart: 20),
     DisplayInter(id: 3,
                 msg: "Presser le bouton avant qu'il ne disparaisse...",
-                interBtn1: InteractionBtn(label: "go 80", jumpToVideoName: nil, goto: 80),
+                interBtn1: InteractionBtn(label: "go 80", goto: 80),
                 interBtn2: nil,
                 interBtn3: nil,
                 displayStart: 52,
                 displayEnd: 65),
     DisplayInter(id: 4,
                 msg: nil,
-                interBtn1: InteractionBtn(label: "go 100", jumpToVideoName: nil, goto: 100),
-                interBtn2: InteractionBtn(label: "go 150", jumpToVideoName: nil, goto: 150),
-                interBtn3: InteractionBtn(label: "go 300", jumpToVideoName: nil, goto: 300),
+                interBtn1: InteractionBtn(label: "go 100", goto: 100),
+                interBtn2: InteractionBtn(label: "go 150", goto: 150),
+                interBtn3: InteractionBtn(label: "go 300", goto: 300),
                 displayStart: 70,
                 displayEnd: 85),
     DisplayInter(id: 5,

@@ -101,7 +101,7 @@ class OverlayView: UIView {
     }
     
     @IBAction func pressRestart(_ sender: Any) {
-        
+        delegate?.restart_overlayView()
     }
     
     @IBAction func pressBtn1(_ sender: Any) {
@@ -246,18 +246,18 @@ class OverlayView: UIView {
         } else {
             //on load une nouvelle vidéo
             if let videoName = jumpToVideoName {
-                delegate?.loadNewVideo_overlayView(videoName: videoName, destTime: dest)
+                delegate?.loadNewVideo_overlayView(videoNameId: videoName, destTime: dest)
             }
         }
     }
-
 }
 
 protocol OverlayViewDelegate {
     func playPause_overlayView() -> Bool
     func videoSeekTo_overlayView(to: CMTime)
     func goBckFwd_overlayView(type: OperatorType, value: Double)
-    func loadNewVideo_overlayView(videoName: String, destTime: Double?)
+    func loadNewVideo_overlayView(videoNameId: String, destTime: Double?)
+    func restart_overlayView()
     func getDeviceViewWidth_overlayView() -> CGFloat
     func getDeviceViewHeight_overlayView() -> CGFloat
 }

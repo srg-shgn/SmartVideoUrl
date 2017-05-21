@@ -419,12 +419,12 @@
                     <rect key="frame" x="0.0" y="340" width="367" height="60"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SmA-QP-Lua">
-                            <rect key="frame" x="15" y="15" width="40" height="30"/>
+                            <rect key="frame" x="15" y="15" width="55" height="30"/>
                             <color key="backgroundColor" red="0.34512993689999999" green="0.60332816840000003" blue="0.8443444967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40" id="iY1-AY-fU3"/>
+                                <constraint firstAttribute="width" constant="55" id="iY1-AY-fU3"/>
                             </constraints>
-                            <state key="normal" title="&lt;|">
+                            <state key="normal" title="restart">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>

@@ -97,6 +97,14 @@ class ViewController: UIViewController {
         self.player.overlayView.delegate = self
         hideInteraction()
         
+        //on teste si on doit afficher le bouton sommaire
+        for interaction in tableInteractions {
+            if interaction.type == .sumary {
+                self.player.overlayView.btnSumary.isHidden = false
+                break
+            }
+        }
+        
         //Détection d'un clic sur la view videoContainerView de OverlayView.xib
         let tapVideoContainer = UITapGestureRecognizer(target: self, action: #selector(self.displayControlPanel))
         self.player.overlayView.videoContainerView.isUserInteractionEnabled = true
@@ -136,15 +144,18 @@ class ViewController: UIViewController {
         var currentChapter: Chapitre? = nil
         if(tableChapitres.count > 0) {
             for chapitre in tableChapitres {
-                if currentTimeFloat >= chapitre.start && currentTimeFloat < chapitre.end {
-                    self.player.overlayView.chapterLabel.text = chapitre.chapterName
-                    currentChapter = chapitre
+                if chapitre.videoNameId == currentVideo?.nameId { //on verifie que le chapitre concerne la video en cours
+                    if currentTimeFloat >= chapitre.start && currentTimeFloat < chapitre.end {
+                        self.player.overlayView.chapterLabel.text = chapitre.chapterName
+                        currentChapter = chapitre
+                    }
                 }
             }
         }
         
         for interaction in tableInteractions {
            // if let currentTimeFloat = Float(currentTime) {
+            if interaction.videoNameId == currentVideo?.nameId { //on verifie que l'interaction concerne la video en cours
                 
                 switch interaction.type {
                 case .loop:
@@ -174,8 +185,6 @@ class ViewController: UIViewController {
                                         if currentTimeFloat >= currentChapter.end - 0.1 {
                                             self.player.overlayView.manageDestination(dest: Double(currentChapter.start), jumpToVideoName: nil)
                                         }
-                                        
-                                        
                                     }
                                 }
                             }
@@ -294,7 +303,7 @@ class ViewController: UIViewController {
                     break
                 }
                 
-            //}
+            }
         }
     }
     
@@ -463,7 +472,6 @@ extension ViewController: OverlayViewDelegate {
         self.player.seek(to: newTime)
     }
     
-    
     func restart_overlayView() {
         if currentVideo?.name == initialVideo?.name {
             let newTime = CMTime.init(seconds: 0, preferredTimescale: CMTimeScale.init(100))
@@ -473,12 +481,32 @@ extension ViewController: OverlayViewDelegate {
         }
     }
     
+    func goSumary_overlayView() {
+        //on récupère l'interaction Sumary pour récupérer la destination
+        for interaction in tableInteractions {
+            if interaction.type == .sumary {
+                let interactionSumary = interaction as! SumaryInter
+                if interactionSumary.videoNameId == currentVideo?.nameId {
+                    let newTime = CMTime.init(seconds: Double(interactionSumary.displayStart! - 1), preferredTimescale: CMTimeScale.init(1))
+                    videoSeekTo_overlayView(to: newTime)
+                } else {
+                    let videoNameId = interactionSumary.videoNameId
+                    let destToGo = Double(interactionSumary.displayStart! - 1)
+                    loadNewVideo_overlayView(videoNameId: videoNameId, destTime: destToGo)
+                }
+                break
+            }
+        }
+    }
+    
     func loadNewVideo_overlayView(videoNameId: String, destTime: Double?) {
         //je vide les tables
         //avant d'ajouter les scripts de récupérations des infos concernant
         //la nouvelle vidéo, en base
-        tableInteractions = []
-        tableChapitres = []
+        
+        //tableInteractions = []
+        //tableChapitres = []
+        
         self.player.view.isHidden = true
         
         //on passe loadingNewVideo à true pour que la tête de lecture se positionne et se lance quand la vidéo est chargé

@@ -56,6 +56,7 @@ class OverlayView: UIView {
     @IBOutlet weak var btn11: UIButton!
     @IBOutlet weak var btn12: UIButton!
 
+    @IBOutlet weak var btnSumary: UIButton!
     
     var destBtn1: Double?
     var destBtn2: Double?
@@ -102,6 +103,10 @@ class OverlayView: UIView {
     
     @IBAction func pressRestart(_ sender: Any) {
         delegate?.restart_overlayView()
+    }
+    
+    @IBAction func pressSumary(_ sender: Any) {
+        delegate?.goSumary_overlayView()
     }
     
     @IBAction func pressBtn1(_ sender: Any) {
@@ -258,6 +263,7 @@ protocol OverlayViewDelegate {
     func goBckFwd_overlayView(type: OperatorType, value: Double)
     func loadNewVideo_overlayView(videoNameId: String, destTime: Double?)
     func restart_overlayView()
+    func goSumary_overlayView()
     func getDeviceViewWidth_overlayView() -> CGFloat
     func getDeviceViewHeight_overlayView() -> CGFloat
 }

@@ -58,7 +58,8 @@ var tableChapitres: [Chapitre] = [
 ]
 
 struct InteractionBtn {
-    let label: String, gotoChapterId: String?
+    let label: String
+    let gotoChapterId: String?
     var jumpToVideoNameId: String?, goto: Double?
     
     init(label: String) { //cet init est utile pour la classe LoopInter
@@ -120,11 +121,13 @@ class Interaction {
         return .none
     }
     let id: Int
+    let videoNameId: String
     let msg: String?
     let interBtn1: InteractionBtn?
     
-    init(id: Int, msg: String?, interBtn1: InteractionBtn?) {
+    init(id: Int, videoNameId: String, msg: String?, interBtn1: InteractionBtn?) {
         self.id = id
+        self.videoNameId = videoNameId
         self.msg = msg
         self.interBtn1 = interBtn1
     }
@@ -137,9 +140,9 @@ class LoopInter: Interaction {
     var chapterToLoop: String?
     var loopActivated: Bool = false
     
-    init(id: Int, msg: String?, interBtn1:InteractionBtn?, chapterToLoop: String, loopActivated: Bool) {
+    init(id: Int, videoNameId: String, msg: String?, interBtn1:InteractionBtn?, chapterToLoop: String, loopActivated: Bool) {
         
-        super.init(id: id, msg: msg, interBtn1: interBtn1)
+        super.init(id: id, videoNameId: videoNameId, msg: msg, interBtn1: interBtn1)
         self.chapterToLoop = chapterToLoop
         self.loopActivated = loopActivated
     }
@@ -153,9 +156,9 @@ class PauseInter: Interaction {
     var interBtn3: InteractionBtn?
     var displayStart: Float?
     
-    init(id: Int, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?, displayStart: Float) {
+    init(id: Int, videoNameId: String, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?, displayStart: Float) {
         
-        super.init(id: id, msg: msg, interBtn1: interBtn1)
+        super.init(id: id, videoNameId: videoNameId, msg: msg, interBtn1: interBtn1)
         self.interBtn2 = interBtn2
         self.interBtn3 = interBtn3
         self.displayStart = displayStart
@@ -168,9 +171,9 @@ class DisplayInter: PauseInter {
     }
     var displayEnd: Float?
     
-    init(id: Int, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?, displayStart: Float, displayEnd: Float) {
+    init(id: Int, videoNameId: String, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?, displayStart: Float, displayEnd: Float) {
         
-        super.init(id: id, msg: msg, interBtn1: interBtn1, interBtn2: interBtn2, interBtn3: interBtn3, displayStart: displayStart)
+        super.init(id: id, videoNameId: videoNameId, msg: msg, interBtn1: interBtn1, interBtn2: interBtn2, interBtn3: interBtn3, displayStart: displayStart)
         self.displayEnd = displayEnd
     }
 }
@@ -190,12 +193,12 @@ class SumaryInter: PauseInter {
     var interBtn11: InteractionBtn?
     var interBtn12: InteractionBtn?
     
-    init(id: Int, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?,
+    init(id: Int, videoNameId: String, msg: String?, interBtn1: InteractionBtn?, interBtn2: InteractionBtn?, interBtn3: InteractionBtn?,
          interBtn4: InteractionBtn, interBtn5: InteractionBtn, interBtn6: InteractionBtn, interBtn7: InteractionBtn,
          interBtn8: InteractionBtn, interBtn9: InteractionBtn, interBtn10: InteractionBtn, interBtn11: InteractionBtn,
          interBtn12: InteractionBtn, displayStart: Float) {
 
-        super.init(id: id, msg: msg, interBtn1: interBtn1, interBtn2: interBtn2, interBtn3: interBtn3, displayStart: displayStart)
+        super.init(id: id, videoNameId: videoNameId ,msg: msg, interBtn1: interBtn1, interBtn2: interBtn2, interBtn3: interBtn3, displayStart: displayStart)
         self.interBtn4 = interBtn4
         self.interBtn5 = interBtn5
         self.interBtn6 = interBtn6
@@ -210,6 +213,7 @@ class SumaryInter: PauseInter {
 
 var tableInteractions: [Interaction] = [
     SumaryInter(id: 7,
+                videoNameId: "vid1",
                 msg: "Sommaire",
                 interBtn1: InteractionBtn(label: "chapitre 1", gotoChapterId: "chap1"),
                 interBtn2: InteractionBtn(label: "capitre 2", gotoChapterId: "chap2"),
@@ -225,23 +229,27 @@ var tableInteractions: [Interaction] = [
                 interBtn12: InteractionBtn(label: "chapitre 12", gotoChapterId: "chap12"),
                 displayStart: 1),
     LoopInter(id: 6,
+                videoNameId: "vid1",
                 msg: "Pressez le bouton pour mettre fin à la boucle",
                 interBtn1: InteractionBtn(label: "chapitre suivant"),
                 chapterToLoop: "chapitre un",
                 loopActivated: true),
     PauseInter(id: 1,
+                videoNameId: "vid1",
                 msg: "Presser l'un des boutons !",
                 interBtn1: InteractionBtn(label: "Toy Story", jumpToVideoNameId: "vid2"),
                 interBtn2: InteractionBtn(label: "go 60", goto: 60),
                 interBtn3: nil,
                 displayStart: 13),
     PauseInter(id: 2,
+                videoNameId: "vid1",
                 msg: nil,
                 interBtn1: InteractionBtn(label: "go 30", goto: 50),
                 interBtn2: InteractionBtn(label: "go 65", goto: 65),
                 interBtn3: InteractionBtn(label: "go 250", goto: 250),
                 displayStart: 20),
     DisplayInter(id: 3,
+                videoNameId: "vid1",
                 msg: "Presser le bouton avant qu'il ne disparaisse...",
                 interBtn1: InteractionBtn(label: "go 80", goto: 80),
                 interBtn2: nil,
@@ -249,6 +257,7 @@ var tableInteractions: [Interaction] = [
                 displayStart: 52,
                 displayEnd: 65),
     DisplayInter(id: 4,
+                videoNameId: "vid1",
                 msg: nil,
                 interBtn1: InteractionBtn(label: "go 100", goto: 100),
                 interBtn2: InteractionBtn(label: "go 150", goto: 150),
@@ -256,6 +265,7 @@ var tableInteractions: [Interaction] = [
                 displayStart: 70,
                 displayEnd: 85),
     DisplayInter(id: 5,
+                videoNameId: "vid1",
                 msg: "Ceci est un test de d'affichage de texte sans bouton",
                 interBtn1: nil,
                 interBtn2: nil,

@@ -127,30 +127,57 @@ class OverlayView: UIView {
     }
     
     @IBAction func pressBtn4(_ sender: Any) {
+        if let destBtn = destBtn4 {
+            manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
+        }
     }
     
     @IBAction func pressBtn5(_ sender: Any) {
+        if let destBtn = destBtn5 {
+            manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
+        }
     }
     
     @IBAction func pressBtn6(_ sender: Any) {
+        if let destBtn = destBtn6 {
+            manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
+        }
     }
     
     @IBAction func pressBtn7(_ sender: Any) {
+        if let destBtn = destBtn7 {
+            manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
+        }
     }
     
     @IBAction func pressBtn8(_ sender: Any) {
+        if let destBtn = destBtn8 {
+            manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
+        }
     }
     
     @IBAction func pressBtn9(_ sender: Any) {
+        if let destBtn = destBtn9 {
+            manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
+        }
     }
     
     @IBAction func pressBtn10(_ sender: Any) {
+        if let destBtn = destBtn10 {
+            manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
+        }
     }
     
     @IBAction func pressBtn11(_ sender: Any) {
+        if let destBtn = destBtn11 {
+            manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
+        }
     }
     
     @IBAction func pressBtn12(_ sender: Any) {
+        if let destBtn = destBtn12 {
+            manageDestination(dest: destBtn, jumpToVideoName: jumpToVideoName3)
+        }
     }
     
     // Our custom view from the XIB file
@@ -245,7 +272,7 @@ class OverlayView: UIView {
         if jumpToVideoName == nil {
             //on reste sur la même video
             if let destBtn = dest {
-                let newTime = CMTime.init(seconds: destBtn, preferredTimescale: CMTimeScale.init(1))
+                let newTime = CMTime.init(seconds: destBtn + 1, preferredTimescale: CMTimeScale.init(1))
                 delegate?.videoSeekTo_overlayView(to: newTime)
             }
         } else {

@@ -277,6 +277,7 @@ class ViewController: UIViewController {
                                     self.player.overlayView.titleLabel.text = sumaryMsg
                                     self.player.overlayView.titleLabel.isHidden = false
                                 }
+                                
                                 if let interBtn1 = sumaryInter.interBtn1 {
                                     self.player.overlayView.btn1.setTitle(interBtn1.label, for: .normal)
                                     self.player.overlayView.jumpToVideoName1 = interBtn1.jumpToVideoNameId
@@ -294,6 +295,69 @@ class ViewController: UIViewController {
                                     self.player.overlayView.jumpToVideoName3 = interBtn3.jumpToVideoNameId
                                     self.player.overlayView.destBtn3 = interBtn3.goto
                                     self.player.overlayView.btnView3.isHidden = false
+                                }
+                                
+                                if let interBtn4 = sumaryInter.interBtn4 {
+                                    self.player.overlayView.btn4.setTitle(interBtn4.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName4 = interBtn4.jumpToVideoNameId
+                                    self.player.overlayView.destBtn4 = interBtn4.goto
+                                    self.player.overlayView.btnView4.isHidden = false
+                                    
+                                    self.player.overlayView.svBtn_4_5_6.isHidden = false
+                                }
+                                if let interBtn5 = sumaryInter.interBtn5 {
+                                    self.player.overlayView.btn5.setTitle(interBtn5.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName5 = interBtn5.jumpToVideoNameId
+                                    self.player.overlayView.destBtn5 = interBtn5.goto
+                                    self.player.overlayView.btnView5.isHidden = false
+                                }
+                                if let interBtn6 = sumaryInter.interBtn6 {
+                                    self.player.overlayView.btn6.setTitle(interBtn6.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName6 = interBtn6.jumpToVideoNameId
+                                    self.player.overlayView.destBtn6 = interBtn6.goto
+                                    self.player.overlayView.btnView6.isHidden = false
+                                }
+                                
+                                if let interBtn7 = sumaryInter.interBtn7 {
+                                    self.player.overlayView.btn7.setTitle(interBtn7.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName7 = interBtn7.jumpToVideoNameId
+                                    self.player.overlayView.destBtn7 = interBtn7.goto
+                                    self.player.overlayView.btnView7.isHidden = false
+                                    
+                                    self.player.overlayView.svBtn_7_8_9.isHidden = false
+                                }
+                                if let interBtn8 = sumaryInter.interBtn8 {
+                                    self.player.overlayView.btn8.setTitle(interBtn8.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName8 = interBtn8.jumpToVideoNameId
+                                    self.player.overlayView.destBtn8 = interBtn8.goto
+                                    self.player.overlayView.btnView8.isHidden = false
+                                }
+                                if let interBtn9 = sumaryInter.interBtn9 {
+                                    self.player.overlayView.btn9.setTitle(interBtn9.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName9 = interBtn9.jumpToVideoNameId
+                                    self.player.overlayView.destBtn9 = interBtn9.goto
+                                    self.player.overlayView.btnView9.isHidden = false
+                                }
+                                
+                                if let interBtn10 = sumaryInter.interBtn10 {
+                                    self.player.overlayView.btn7.setTitle(interBtn10.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName10 = interBtn10.jumpToVideoNameId
+                                    self.player.overlayView.destBtn10 = interBtn10.goto
+                                    self.player.overlayView.btnView10.isHidden = false
+                                    
+                                    self.player.overlayView.svBtn_10_11_12.isHidden = false
+                                }
+                                if let interBtn11 = sumaryInter.interBtn11 {
+                                    self.player.overlayView.btn11.setTitle(interBtn11.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName11 = interBtn11.jumpToVideoNameId
+                                    self.player.overlayView.destBtn11 = interBtn11.goto
+                                    self.player.overlayView.btnView11.isHidden = false
+                                }
+                                if let interBtn12 = sumaryInter.interBtn12 {
+                                    self.player.overlayView.btn12.setTitle(interBtn12.label, for: .normal)
+                                    self.player.overlayView.jumpToVideoName12 = interBtn12.jumpToVideoNameId
+                                    self.player.overlayView.destBtn12 = interBtn12.goto
+                                    self.player.overlayView.btnView12.isHidden = false
                                 }
                             }
                         }
@@ -512,7 +576,7 @@ extension ViewController: OverlayViewDelegate {
         //on passe loadingNewVideo à true pour que la tête de lecture se positionne et se lance quand la vidéo est chargé
         //le test de loadingNewVideo se fait dans func playerReady
         loadingNewVideo = true
-        startTimeNewVideo = destTime
+        startTimeNewVideo = destTime! + 1 //je rajoute 1 car semble positionner la tête de lecture avnat le point de destination
         
         for video in tableVideos {
             if video.nameId == videoNameId {

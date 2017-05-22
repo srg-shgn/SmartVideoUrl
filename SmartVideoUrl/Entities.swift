@@ -83,6 +83,8 @@ struct InteractionBtn {
         self.gotoChapterId = nil
     }
     
+    //pour l'initialisation ci dessous, on indique juste le chapitre cible
+    //on va déterminer jumpToVideoNameId et goto dynamiquement en consuultant tableChapitres
     init(label: String, gotoChapterId: String) {
         self.label = label
         self.gotoChapterId = gotoChapterId
